@@ -1,0 +1,39 @@
+<div>
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button id="menuToggleBtn" type="button" class="navbar-toggle collapsed"
+                data-toggle="collapse"
+                aria-expanded="false" aria-controls="navbar"
+                ng-click="menuToggle()">
+          <span class="menu-icon collapse" ng-if="!vm.toggled"></span>
+          <span class="menu-icon open" ng-if="vm.toggled"></span>
+        </button>
+      </div>
+      <div class="bread hidden-xs">
+        <span ng-bind="currentMenu.name"></span>
+      </div>
+      <div class="user-info" ng-if="isLogin()">
+        <span class="user-name">欢迎你，{{vm.loginUserName}}</span>
+        <a ng-click="logout()" id="logout" name="logout">
+          <i class="icon glyphicon glyphicon-off"></i>
+          <span>退出账户</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="wrapper wrapper-width-side" ng-class="{'toggled' : vm.toggled}">
+    <div class="sidebar-wrapper">
+      <div id="sidebar-menu">
+        <site-menu></site-menu>
+      </div>
+    </div>
+    <div class="page-content-wrapper">
+      <div ui-view></div>
+    </div>
+  </div>
+
+  <!--<site-menu-mobile class="mobile-menu-list"></site-menu-mobile>-->
+
+</div>

@@ -1,0 +1,70 @@
+@import "../../styles/variables";
+
+.home-page {
+  .row {
+    margin-right: 8px;
+  }
+  .panel {
+    margin-top: 20px;
+    padding: 20px 40px;
+
+    .project-icon {
+      background: url(./project.png) 0 0 no-repeat;
+      background-size: auto 50px;
+      height: 50px;
+      width: 50px;
+      display: inline-block;
+    }
+
+    .title {
+      vertical-align: bottom;
+      font-weight: 500;
+      font-size: 28px;
+      display: inline-block;
+    }
+
+    .content-text {
+      padding-top: 20px;
+      font-size: 16px;
+      color: #6F6F6F;
+      display: inline-block;
+      p {
+        padding-left: 20px;
+        display: inline-block;
+      }
+    }
+
+    .tipBox {
+      margin-bottom: 30px;
+      margin-top: 20px;
+      span {
+        padding-right: 5px;
+        color: $brand-primary-orange-dark;
+      }
+    }
+
+    .actionBox {
+      span {
+        padding-right: 5px;
+        color: #fff;
+      }
+      button {
+        color: #fff;
+        width: 50%;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $screen-xs-min) {
+  .home-page {
+    .panel {
+      margin-top: 0;
+    }
+    .content-text {
+      padding-left: 0;
+    }
+  }
+}
+
+

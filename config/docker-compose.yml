@@ -1,0 +1,37 @@
+BrightnessFront:
+  ports:
+  - 8081:80/tcp
+  labels:
+    io.rancher.container.pull_image: always
+  tty: true
+  image: %BUILD_IMAGE_FRONT%
+  links:
+  - BrightnessCore:tomcat
+  volumes:
+  - /etc/default.conf:/etc/nginx/conf.d/default.conf
+  - /etc/ca:/etc/ca
+  stdin_open: true
+BrightnessCore:
+  ports:
+  - 8080:8080/tcp
+  environment:
+    VAULT_ADDR: http://vault.hna.dev/
+    VAULT_TOKEN: 9987de57-8b04-c031-24de-c74e331d7ab1
+    SPRING_PROFILES_ACTIVE: dev
+  external_links:
+  - 'DATA/mongo:'
+  - 'DATA/redis:'
+  - 'DATA/vault:'
+  - 'DATA/mysql:'
+  log_driver: ''
+  labels:
+    io.rancher.container.pull_image: always
+    io.rancher.scheduler.affinity:host_label: tomcat=tomcat
+  tty: true
+  log_opt: {}
+  image: %BUILD_IMAGE_CORE%
+  volumes:
+  - /etc/hosts:/etc/hosts
+  links:
+    - MongoAPIService:mongoapi
+  stdin_open: true

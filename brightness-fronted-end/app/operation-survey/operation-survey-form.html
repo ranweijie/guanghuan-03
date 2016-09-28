@@ -1,0 +1,146 @@
+<div class="operation-survey-form">
+  <div class="panel info-panel">
+    <div class="panel-body">
+      <form name="addOperationSurveyForm" class="panel-form" novalidate>
+        <div class="row">
+          <div class="panel-heading">
+            <h3 class="panel-title">初次筛查</h3>
+          </div>
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-xs-12">
+              <div class="form-group">
+                <label>初次筛查开始日期</label>
+                <hna-popup-calendar date="vm.operationSurvey.first_check.start_date" id="startDate"
+                                    name="firstCheckStartDate" ng-model="vm.operationSurvey.first_check.start_date">
+                </hna-popup-calendar>
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-xs-12">
+              <div class="form-group">
+                <label>初次筛查结束日期</label>
+                <hna-popup-calendar date="vm.operationSurvey.first_check.end_date" id="endDate"
+                                    name="firstCheckEndDate" ng-model="vm.operationSurvey.first_check.end_date">
+                </hna-popup-calendar>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-xs-12">
+              <div class="form-group"
+                   ng-class="{'has-error':vm.invalidNumber(addOperationSurveyForm.firstCheckNum, addOperationSurveyForm)}">
+                <label>初次检查人数</label>
+                <input type="number" class="form-control" name="firstCheckNum" id="checkNum"
+                       ng-model="vm.operationSurvey.first_check.checked_numbers"
+                        min="0" max="99999">
+                <p class="help-block"
+                   ng-show="vm.invalidNumber(addOperationSurveyForm.firstCheckNum, addOperationSurveyForm)">
+                  <i class="glyphicon glyphicon-remove-circle"></i>数字范围为0-99999
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group">
+              <div>初次筛查方法</div>
+              <div class="checkbox" id="checkMethod">
+                <label class="checkbox-inline" ng-repeat="method in vm.methods">
+                  <input type="checkbox" value="{{method}}" ng-checked="vm.operationSurvey.first_check.methods.indexOf(method) > -1"
+                    ng-click="vm.toggleSelection(method,vm.operationSurvey.first_check.methods)">{{method}}
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="panel-heading">
+            <h3 class="panel-title">复查</h3>
+          </div>
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-xs-12">
+              <div class="form-group">
+                <label>复查开始日期</label>
+                <hna-popup-calendar date="vm.operationSurvey.second_check.start_date" id="reviewStartDate"
+                                    name="secondCheckStartDate" ng-model="vm.operationSurvey.second_check.start_date">
+                </hna-popup-calendar>
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-xs-12">
+              <div class="form-group">
+                <label>复查结束日期</label>
+                <hna-popup-calendar date="vm.operationSurvey.second_check.end_date" id="reviewEndDate"
+                                    name="secondCheckEndDate"
+                                    ng-model="vm.operationSurvey.second_check.end_date">
+                </hna-popup-calendar>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-xs-12">
+              <div class="form-group"
+                   ng-class="{'has-error':vm.invalidNumber(addOperationSurveyForm.reviewCheckNum, addOperationSurveyForm)}">
+                <label>复查人数</label>
+                <input type="number" class="form-control" name="reviewCheckNum" id="reviewNum"
+                       ng-model="vm.operationSurvey.second_check.checked_numbers"
+                       min="0" max="99999">
+                <p class="help-block"
+                   ng-show="vm.invalidNumber(addOperationSurveyForm.reviewCheckNum, addOperationSurveyForm)">
+                  <i class="glyphicon glyphicon-remove-circle"></i>数字范围为0-99999
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-xs-12">
+              <div class="form-group">
+                <div>复查方法</div>
+                <div class="checkbox" id="reviewMethod">
+                  <label class="checkbox-inline" ng-repeat="method in vm.methods">
+                    <input type="checkbox" value="{{method}}" ng-checked="vm.operationSurvey.second_check.methods.indexOf(method) > -1"
+                           ng-click="vm.toggleSelection(method,vm.operationSurvey.second_check.methods)">{{method}}
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-xs-12">
+            <div class="form-group"
+                 ng-class="{'has-error':vm.invalidNumber(addOperationSurveyForm.confirmNum, addOperationSurveyForm)}">
+              <label>确认白内障人数</label>
+              <input type="number" class="form-control" name="confirmNum" id="confirmedCase"
+                     ng-model="vm.operationSurvey.confirmed_numbers"
+                     min="0" max="99999">
+              <p class="help-block"
+                 ng-show="vm.invalidNumber(addOperationSurveyForm.confirmNum, addOperationSurveyForm)">
+                <i class="glyphicon glyphicon-remove-circle"></i>数字范围为0-99999
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-xs-12">
+            <div class="form-group">
+              <label>确认而拒绝参加诊治的原因</label>
+                <textarea class="form-control" rows="3" ng-model="vm.operationSurvey.reason_of_rejection"
+                          id="reason" name="reason" maxlength="300"></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-6 col-md-3 col-lg-2">
+            <button class="btn btn-lg btn-cancel" id="back" name="back"
+                    ui-sref="base.operationSurvey.view">返回
+            </button>
+          </div>
+          <div class="col-xs-6 col-md-3 col-lg-2">
+            <button type="submit" class="btn btn-lg btn-submit" id="submit" name="submit"
+                    ng-click="vm.submitForm(addOperationSurveyForm)">提交
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

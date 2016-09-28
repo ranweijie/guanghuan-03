@@ -1,0 +1,74 @@
+<div class="home-page">
+  <div class="row">
+    <button class="btn btn-xl btn-submit col-xs-4 col-xs-offset-8
+    col-md-3 col-md-offset-9 col-lg-offset-10 col-lg-2" ui-sref="static.projectList">返回项目列表</button>
+  </div>
+  <div class="panel center-block">
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-lg-1 col-md-1 col-xs-2">
+          <div class="project-icon"></div>
+        </div>
+        <div class="col-lg-11 col-md-11 col-xs-10">
+          <p class="title">{{vm.project.info.name}} ({{vm.project.status| projectStatusMapping}})</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-11 col-lg-offset-1 col-md-11 col-md-offset-1 col-xs-10 col-xs-offset-2 content-text"
+             id="date"
+             name="date">
+          <span>时间</span>
+          <p ng-if="vm.project.info.schedule.start_date && vm.project.info.schedule.end_date">{{vm.project.info.schedule.start_date |
+            date:'yyyy年MM月dd日'}} - {{vm.project.info.schedule.end_date | date:'yyyy年MM月dd日'}}</p>
+          <p ng-if="!vm.project.info.schedule.start_date || !vm.project.info.schedule.end_date">待定</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-11 col-lg-offset-1 col-md-11 col-md-offset-1 col-xs-10 col-xs-offset-2 content-text"
+             id="location" name="location">
+          <span>地点</span>
+          <p>{{vm.project.info.location | replaceEmptyText}}</p>
+        </div>
+      </div>
+
+      <div class="row tipBox" ng-if="vm.isShowActions">
+        <div class="col-lg-11 col-lg-offset-1 col-md-11 col-md-offset-1 col-xs-10 col-xs-offset-2">
+          <p>
+            <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>
+            {{vm.tipMsg}}
+          </p>
+        </div>
+      </div>
+
+      <div class="row actionBox" ng-if="vm.isShowActions">
+        <div class="col-lg-11 col-lg-offset-1 col-md-11 col-md-offset-1 col-xs-10 col-xs-offset-2">
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-xs-6">
+              <button class="btn" ng-if="vm.project.status !== vm.projectStatusConst.ARCHIVE" ng-click="vm.updateStatus(vm.projectStatusConst.CANCEL)">
+                <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+                直接结束
+              </button>
+              <button class="btn btn-primary" ng-if="vm.project.status === vm.projectStatusConst.ARCHIVE" ng-click="vm.updateStatus(vm.projectStatusConst.END)">
+                <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+                项目结束
+              </button>
+            </div>
+            <div class="col-lg-6 col-md-6 col-xs-6" ng-if="vm.project.status !== vm.projectStatusConst.ARCHIVE">
+              <button class="btn btn-primary" ng-if="vm.project.status === vm.projectStatusConst.PREPARING"
+                      ng-click="vm.updateStatus(vm.projectStatusConst.IN_PROGRESS)">
+                <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+                开始执行
+              </button>
+              <button class="btn btn-primary" ng-if="vm.project.status === vm.projectStatusConst.IN_PROGRESS"
+                      ng-click="vm.updateStatus(vm.projectStatusConst.ARCHIVE)">
+                <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+                开始归档
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

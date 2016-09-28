@@ -1,0 +1,41 @@
+<div class="project-experience">
+  <div class="row">
+    <div class="col-xs-12 col-md-12 col-lg-12">
+      <div class="panel info-panel">
+        <div class="panel-body">
+          <form name="experienceForm" novalidate>
+            <div class="row">
+              <div class="col-xs-12 col-md-12 col-lg-12">
+                <div class="form-group panel-heading">
+                    <h3 class="panel-title">项目亮点</h3>
+                </div>
+                <div class="panel-body">
+                  <textarea class="form-control" name="well" id="well" rows="10" maxlength="1000"
+                            ng-model="vm.experience.well"></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12 col-md-12 col-lg-12">
+                <div class="form-group panel-heading">
+                  <h3 class="panel-title">项目不足</h3>
+                </div>
+                <div class="panel-body">
+                  <textarea class="form-control" name="lessWell" id="lessWell" rows="10" maxlength="1000"
+                            ng-model="vm.experience.less_well"></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="row" ng-if="vm.showUpdateButton">
+              <div class="col-xs-12 col-md-12 col-lg-12">
+                <button type="submit" class="btn btn-lg btn-submit" id="submit" name="submit"
+                        ng-click="vm.submit(experienceForm)">提交
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

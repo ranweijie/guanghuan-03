@@ -1,0 +1,90 @@
+import org.apache.tools.ant.filters.ReplaceTokens
+
+buildscript {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        jcenter()
+        maven { url "http://repo.spring.io/plugins-release" }
+        maven { url "http://repo.spring.io/milestone" }
+        maven { url "https://plugins.gradle.org/m2/" }
+    }
+    dependencies {
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:1.3.5.RELEASE"
+        classpath 'org.mongodb:mongo-java-driver:3.2.2'
+        classpath 'org.mongodb:mongodb-driver:3.2.2'
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'spring-boot'
+
+sourceCompatibility = 1.8
+version = '1.0'
+
+repositories {
+    mavenCentral()
+}
+
+project.ext {
+    environment = 'local'
+}
+loadConfiguration()
+
+bootRepackage {
+    mainClass = 'com.hna.brightness.dataservice.BrightnessDataServiceApp'
+}
+
+springBoot {
+    mainClass = 'com.hna.brightness.dataservice.BrightnessDataServiceApp'
+    executable = true
+}
+
+bootRun {
+    addResources = false
+}
+
+group = 'com.hna.brightness'
+
+configurations {
+    providedRuntime
+}
+
+compileJava.dependsOn(processResources)
+
+dependencies {
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '1.3.5.RELEASE'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-mongodb', version: '1.3.5.RELEASE'
+    compile group: 'org.mongodb', name: 'mongo-java-driver', version: '3.2.2'
+    compile group: 'org.mongodb', name: 'mongodb-driver', version: '3.2.2'
+
+
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+}
+
+task stage(dependsOn: 'bootRepackage') {
+}
+
+
+processResources {
+    include '*.xml'
+    include "application.properties"
+    include "application-${project.ext.environment}.properties"
+    include 'db/migration/**'
+
+    filesMatching("**/application.properties") {
+        filter(ReplaceTokens, tokens: [
+                'profile': "${project.ext.environment}".toString(),
+        ])
+    }
+}
+
+task local << {
+    bootRun.systemProperty 'spring.profiles.active', 'local'
+}
+
+def loadConfiguration() {
+    def environment = hasProperty('env') ? env : 'local'
+    project.ext.environment = environment
+}

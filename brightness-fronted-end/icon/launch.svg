@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="46px" height="46px" viewBox="0 0 46 46" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 3.8.3 (29802) - http://www.bohemiancoding.com/sketch -->
+    <title>启动仪式icon@2x</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M2.7553602,1.8949948 C2.7553602,1.8949948 7.74930517,0.138910083 12.3150401,3.15343003 C16.880775,6.16794997 20.4972957,1.8949948 20.4972957,1.8949948 L20.4972957,15.137419 C20.4972957,15.137419 16.6688341,20.1936039 12.3150401,16.9197388 C7.96124612,13.6458737 2.7553602,15.137419 2.7553602,15.137419 L2.7553602,1.8949948 Z" id="path-1"></path>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="17.7419355" height="16.6363865" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+    </defs>
+    <g id="一期" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round">
+        <g id="启动仪式icon">
+            <g id="Group" transform="translate(12.000000, 11.000000)">
+                <use id="Rectangle-5" stroke="#979797" mask="url(#mask-2)" stroke-width="2.8" stroke-linejoin="round" transform="translate(11.626328, 9.704665) rotate(10.000000) translate(-11.626328, -9.704665) " xlink:href="#path-1"></use>
+                <path d="M7.09677419,4.87878788 C7.09677419,4.87878788 11.4207396,5.24642713 11.4207394,6.94686793 C11.4207392,8.64730873 15.3703621,10.0674569 16.6009134,9.38606384" id="Path-4-Copy" stroke="#D2D2D2" stroke-width="1.4"></path>
+                <path d="M5.67741935,8.36363636 C5.67741935,8.36363636 10.0013848,8.73127562 10.0013846,10.4317164 C10.0013843,12.1321572 13.9510072,13.5523054 15.1815586,12.8709123" id="Path-4-Copy-2" stroke="#D2D2D2" stroke-width="1.4"></path>
+                <path d="M4.61290323,0.348484848 L0.35483871,22.6515152" id="Line" stroke="#979797" stroke-width="1.4"></path>
+            </g>
+        </g>
+    </g>
+</svg>

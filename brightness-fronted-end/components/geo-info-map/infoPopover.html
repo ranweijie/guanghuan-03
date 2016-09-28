@@ -1,0 +1,22 @@
+<div class="info">
+  <div class="info-top">
+    <div>
+      <i class="icon ui-icon-introduction"></i>{{project.info.name}}
+    </div>
+    <img src="http://webapi.amap.com/images/close2.gif" ng-click="closeInfoWindow()">
+  </div>
+  <div class="info-middle">
+    <p><i class="icon ui-icon-date"></i>
+      时间: {{project.info.schedule.start_date | date:'yyyy年MM月dd日'}} - {{project.info.schedule.end_date | date:'yyyy年MM月dd日'}}
+    </p>
+    <p>
+      <i class="icon ui-icon-address"></i>
+      地点: {{project.info.location}}
+    </p>
+    <p>
+      <i class="icon ui-icon-people"></i>
+      治愈人数: <strong class="primary-red">{{project.cured_numbers}}</strong><span class="primary-red">人</span>
+    </p>
+    <a href="">项目详情</a>
+  </div>
+</div>

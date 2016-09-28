@@ -1,0 +1,18 @@
+<div class="hna-popup-calendar" ng-class="{'has-error': invalidDate || requiredDate}">
+  <p class="input-group">
+    <input type="text" class="form-control" uib-datepicker-popup ng-model="viewDate"
+           ng-model-options="ngModelOptions" maxlength="10" placeholder="yyyy-mm-dd"
+           is-open="popup.opened" datepicker-options="dateOptions"
+           datepicker-append-to-body="true"
+           ng-change="datePickerSelected()"
+           current-text="今天" clear-text="清除" close-text="关闭"/>
+      <span class="input-group-btn">
+        <button type="button" class="btn btn-default" ng-click="open()">
+          <i class="glyphicon glyphicon-calendar"></i>
+        </button>
+      </span>
+  </p>
+  <p class="help-block" ng-show="invalidDate || requiredDate">
+    <i class="glyphicon glyphicon-remove-circle"></i>请填写正确日期
+  </p>
+</div>

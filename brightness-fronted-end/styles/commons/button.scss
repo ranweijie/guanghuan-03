@@ -1,0 +1,77 @@
+.btn {
+  border-radius: 4px;
+  color: #fff;
+  &:hover {
+    color: #fff;
+  }
+}
+
+.btn-xxl {
+  padding: 0.2rem 0;
+  height: 3rem;
+  width: 22rem;
+  font-size: 1.6rem;
+}
+
+.btn-xl {
+  padding: 0.2rem 0;
+  height: 3rem;
+  width: 16rem;
+  font-size: 1.6rem;
+}
+
+.btn-lg {
+  padding: 0.4rem 0;
+  height: 3rem;
+  width: 13rem;
+  font-size: 1.6rem;
+}
+
+.btn-md {
+  padding: 0.5rem 0;
+  height: 3rem;
+  width: 8rem;
+  font-size: 1.4rem;
+}
+
+.btn-small {
+  padding: 0.1rem 0;
+  height: 2rem;
+  width: 6rem;
+  font-size: 1.1rem;
+}
+
+.btn-bottom {
+  margin-left: 10px;
+  margin-top: 30px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.btn-submit {
+  background-color: $brand-primary-blue;
+  &:hover {
+    background-color: $brand-primary-blue-dark;
+  }
+}
+
+.btn-cancel {
+  background-color: $btn-gray;
+  &:hover {
+    background-color: $btn-gray-dark;
+  }
+}
+
+.btn-view {
+  background-color: $brand-primary-orange;
+  &:hover {
+    background-color: $brand-primary-orange-dark;
+  }
+}
+
+.btn-delete {
+  background-color: $brand-primary-red;
+  &:hover {
+    background-color: $brand-primary-red-dark;
+  }
+}

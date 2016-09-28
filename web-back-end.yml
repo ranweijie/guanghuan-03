@@ -1,0 +1,19 @@
+---
+- hosts: web
+  tasks:
+  - name: add tomcat service
+    copy: src=tomcat dest=/etc/init.d/tomcat
+
+  - name: chmod X
+    file: dest=/etc/init.d/tomcat mode=755 owner=root
+
+  - name: delete core
+    shell: rm -rf /usr/local/tomcat/webapps/ROOT*
+  - name: copy core
+    copy: src=./brightness-core/build/libs/brightness-core-1.0.war dest=/usr/local/tomcat/webapps/ROOT.war
+
+  - name: restart nginx
+    service: name=nginx state=restarted
+
+  - name: restart tomcat
+    service: name=tomcat state=restarted

@@ -1,0 +1,180 @@
+<div  class="operation-survey">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel info-panel">
+        <div class="panel-heading">
+          <h3 class="panel-title">初次筛查</h3>
+        </div>
+        <div class="panel-body">
+          <div class="row mobile-survey-container">
+            <div class="col-xs-12 col-md-12 col-lg-12">
+              <div class="row">
+                <div class="col-xs-12 col-md-4 col-lg-4 mobile-survey-item">
+                  <div class="row">
+                    <div class="col-xs-6 col-md-5 col-lg-5 info-label">
+                      <i class="icon ui-icon-date"></i>筛查开始日期
+                    </div>
+                    <div class="col-xs-6 col-md-7 col-lg-7 survey-result" id="startDate" name="startDate">
+                      {{vm.operationSurvey.first_check.start_date | date:'yyyy年MM月dd日' | replaceEmptyText}}
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-12 col-md-4 col-lg-4 mobile-survey-item">
+                  <div class="row">
+                    <div class="col-xs-6 col-md-5 col-lg-5 info-label">
+                      <i class="icon ui-icon-date"></i>筛查结束日期
+                    </div>
+                    <div class="col-xs-6 col-md-7 col-lg-7 survey-result" id="endDate" name="endDate">
+                      {{vm.operationSurvey.first_check.start_date | date:'yyyy年MM月dd日' | replaceEmptyText}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row mobile-survey-container">
+            <div class="col-xs-12 col-md-12 col-lg-12">
+              <div class="row">
+                <div class="col-xs-12 col-md-4 col-lg-4 mobile-survey-item">
+                  <div class="row">
+                    <div class="col-xs-6 col-md-5 col-lg-5 info-label">
+                      <i class="icon ui-icon-people"></i>筛查人数
+                    </div>
+                    <div class="col-xs-6 col-md-7 col-lg-7 survey-result" id="checkNum" name="checkNum">
+                      {{vm.operationSurvey.first_check.checked_numbers}}人
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-12 col-md-4 col-lg-4 mobile-survey-item">
+                  <div class="row">
+                    <div class="col-xs-6 col-md-5 col-lg-5 info-label">
+                      <i class="icon ui-icon-analyse"></i>筛查方法
+                    </div>
+                    <div class="col-xs-6 col-md-7 col-lg-7 survey-result" id="checkMethod" name="checkMethod">
+                      {{vm.operationSurvey.first_check.methods | arrayReplaceToString | replaceEmptyText}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel info-panel">
+        <div class="panel-heading">
+          <h3 class="panel-title">复查</h3>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-xs-12 col-md-8 col-lg-8">
+              <div class="row mobile-survey-container">
+                <div class="col-xs-12 col-md-12 col-lg-12">
+                  <div class="row">
+                    <div class="col-xs-12 col-md-6 col-lg-6 mobile-survey-item">
+                      <div class="row">
+                        <div class="col-xs-6 col-md-5 col-lg-5 info-label">
+                          <i class="icon ui-icon-date"></i>复查开始日期
+                        </div>
+                        <div class="col-xs-6 col-md-7 col-lg-7 survey-result" id="reviewStartDate" name="reviewStartDate">
+                          {{vm.operationSurvey.second_check.start_date | date:'yyyy年MM月dd日' | replaceEmptyText}}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-xs-12 col-md-6 col-lg-6 mobile-survey-item">
+                      <div class="row">
+                        <div class="col-xs-6 col-md-5 col-lg-5 info-label">
+                          <i class="icon ui-icon-date"></i>复查结束日期
+                        </div>
+                        <div class="col-xs-6 col-md-7 col-lg-7 survey-result" id="reviewEndDate" name="reviewEndDate">
+                          {{vm.operationSurvey.second_check.start_date | date:'yyyy年MM月dd日' | replaceEmptyText}}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row mobile-survey-container">
+                <div class="col-xs-12 col-md-12 col-lg-12">
+                  <div class="row">
+                    <div class="col-xs-12 col-md-6 col-lg-6 mobile-survey-item">
+                      <div class="row">
+                        <div class="col-xs-6 col-md-5 col-lg-5 info-label">
+                          <i class="icon ui-icon-people"></i>筛查人数
+                        </div>
+                        <div class="col-xs-6 col-md-7 col-lg-7 survey-result" id="reviewNum" name="reviewNum">
+                          {{vm.operationSurvey.second_check.checked_numbers}}人
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-xs-12 col-md-6 col-lg-6 mobile-survey-item">
+                      <div class="row">
+                        <div class="col-xs-6 col-md-5 col-lg-5 info-label">
+                          <i class="icon ui-icon-analyse"></i>筛查方法
+                        </div>
+                        <div class="col-xs-6 col-md-7 col-lg-7 survey-result" id="reviewMethod" name="reviewMethod">
+                          {{vm.operationSurvey.second_check.methods | arrayReplaceToString | replaceEmptyText}}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12 col-md-4 col-lg-4">
+              <div class="row">
+                <div class="col-xs-6 col-md-12 col-lg-12 info-label">
+                  <i class="icon ui-icon-people"></i>确诊白内障人数
+                </div>
+                <div class="col-xs-6 col-md-12 col-lg-12 survey-result-confirmed-number" id="confirmedCase" name="confirmedCase">
+                  {{vm.operationSurvey.confirmed_numbers}}人
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel info-panel">
+        <div class="panel-body">
+          <div class="row clear-bottom flex-col">
+            <div>
+              <i class="icon ui-icon-notes"></i>确诊而拒绝参加就诊的原因
+            </div>
+            <div class="row">
+              <div class="row">
+                <div class="col-lg-1 col-md-1 col-xs-1">
+                  <img ng-src="{{vm.upQuote}}" class="panel-bg-xsmall">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-xs-10 col-xs-offset-1" id="reason" name="reason">
+                  <pre>{{vm.operationSurvey.reason_of_rejection | replaceEmptyText}}</pre>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-1 col-lg-offset-11 col-md-1 col-md-offset-11 col-xs-1 col-xs-offset-11">
+                  <img ng-src="{{vm.downQuote}}" class="panel-bg-xsmall">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row" ng-if="vm.showUpdateButton">
+    <div class="col-lg-12">
+      <button class="btn btn-lg btn-submit btn-bottom" ui-sref="base.operationSurvey.form" id="update">编辑</button>
+    </div>
+  </div>
+</div>
+
+

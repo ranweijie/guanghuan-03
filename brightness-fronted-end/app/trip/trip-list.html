@@ -1,0 +1,29 @@
+<div class="trip-list">
+  <div class="panel info-panel patient-info">
+    <div class="panel-heading">
+      <h3 class="panel-title"><i class="icon ui-icon-notes"></i>考察记录</h3>
+      <button ng-if="vm.showUpdateButton" class="btn btn-lg btn-submit pull-right" id="add" ui-sref="base.trip.form">添加记录</button>
+    </div>
+    <div class="panel-body">
+      <div class="trip-list-table">
+        <table class="table panel-table">
+          <thead></thead>
+          <tbody>
+          <tr ng-repeat="trip in vm.tripList track by $index" id="trip{{$index}}">
+            <td class="td-content" id="name{{$index}}">
+              <i class="icon ui-icon-notes"></i>
+              {{trip.start_date | date: "yyyy年MM月dd日"}} 到 {{trip.end_date | date: "yyyy年MM月dd日"}}
+            </td>
+            <td class="td-button">
+              <button class="btn btn-small btn-view" id="view{{$index}}" ui-sref="base.trip.form({id: trip._id})">编辑</button>
+            </td>
+            <td ng-if="vm.showUpdateButton" class="td-button">
+              <button class="btn btn-small btn-delete" id="delete{{$index}}" ng-click="vm.deleteTrip(trip._id)">删除</button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

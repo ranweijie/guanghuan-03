@@ -1,0 +1,9 @@
+@import "styles/variables";
+@import "styles/bootstrap";
+@import "styles/commons";
+@import "styles/font-awesome";
+
+body {
+  font-family: $text-font;
+  -webkit-font-smoothing: antialiased;
+}

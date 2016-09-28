@@ -1,0 +1,14 @@
+@import "../../styles/variables";
+
+.project-info-form {
+  .project-title {
+    label {
+      font-size: 16px;
+      font-weight: bold;
+    }
+  }
+
+  .row .row-loop {
+    margin-bottom: 20px;
+  }
+}

@@ -1,0 +1,62 @@
+<div class="required-tips">
+  <h6>*为必填项</h6>
+</div>
+<div class="trip-form">
+  <div class="col-lg-12">
+    <div class="panel info-panel">
+      <div class="panel-body">
+        <form name="tripForm" class="panel-form" novalidate>
+          <div class="row">
+            <div class="col-xs-6 col-md-6 col-lg-6">
+              <div class="form-group">
+                <label class="required-label">起始日期</label>
+                <hna-popup-calendar date="vm.tripInfo.start_date" id="startDate" is-required="true"
+                                    name="startDate" ng-model="vm.tripInfo.start_date">
+                </hna-popup-calendar>
+              </div>
+            </div>
+            <div class="col-xs-6 col-md-6 col-lg-6">
+              <div class="form-group">
+                <label class="required-label">结束日期</label>
+                <hna-popup-calendar date="vm.tripInfo.end_date" id="endDate" is-required="true"
+                                    name="endDate" ng-model="vm.tripInfo.end_date">
+                </hna-popup-calendar>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-12 col-md-12 col-lg-12">
+              <div class="form-group">
+                <label>考察人员名单</label>
+                <textarea class="form-control" name="participants" id="participants"
+                          rows="3" maxlength="300" ng-model="vm.tripInfo.participant_names"></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-12 col-md-12 col-lg-12">
+              <div class="form-group">
+                <label>考察情况说明</label>
+                <textarea class="form-control" name="remark" id="remark"
+                          rows="10" maxlength="1000" ng-model="vm.tripInfo.remark"></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-6 col-md-2 col-lg-2">
+              <button class="btn btn-lg btn-cancel" id="cancel" ui-sref="base.trip.list">返回</button>
+            </div>
+            <div ng-if="vm.showUpdateButton" class="col-xs-6 col-md-2 col-lg-2">
+              <button class="btn btn-lg btn-submit" id="submit" type="submit"
+                      ng-click="vm.submit(tripForm)">提交</button>
+            </div>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

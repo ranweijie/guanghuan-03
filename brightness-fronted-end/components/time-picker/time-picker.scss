@@ -1,0 +1,35 @@
+.hna-time-picker {
+  min-width: 70px;
+  .form-control {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 6px;
+    text-align: center;
+  }
+  .time-part {
+    display: inline-block;
+  }
+  .time-part-input {
+    width: 30%;
+    a {
+      display: inline-block;
+      width: 100%;
+      color: #555;
+      cursor: pointer;
+    }
+  }
+  .time-part-separation {
+    width: 10%;
+  }
+  .dropdown-menu {
+    overflow: auto;
+    overflow-x: hidden;
+    height: 128px;
+    min-width: 100%;
+
+    text-align: center;
+  }
+  .fa {
+    float: right;
+  }
+}

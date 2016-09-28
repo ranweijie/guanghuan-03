@@ -1,0 +1,10 @@
+<div class="hna-date-box">
+  <div class="primary-blue row-text">
+    <div ng-if="date">
+      <strong>{{date | date:'yyyy'}}</strong>年
+      <strong>{{date | date:'MM'}}</strong>月
+      <strong>{{date | date:'dd'}}</strong>日
+    </div>
+    <span ng-if="!date">{{start_date | replaceEmptyText}}</span>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+@import "../../styles/variables";
+.feedback-view {
+  .feedback-view-box {
+    position: relative;
+    height: 200px;
+    text-align: center;
+
+    .feedback-number {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      border-right: solid 1px $bg-gray-dark;
+      transform: translateY(-50%);
+      font-size: $font-lg;
+    }
+
+    span {
+      font-size: 2.4rem;
+    }
+
+    strong {
+      margin: 0 10px;
+      font-weight: normal;
+      font-size: 70px;
+      color: $brand-primary-orange;
+    }
+  }
+  .pagination {
+    margin: 0;
+  }
+}

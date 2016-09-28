@@ -1,0 +1,62 @@
+<div class="row">
+  <div class="col-lg-12">
+    <div class="panel info-panel schedule">
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+            <div class="btn-group" uib-dropdown>
+              <button id="categoryButton" name="singleButton" type="button" class="btn btn-lg btn-submit" uib-dropdown-toggle>
+                <span>{{vm.selectedCategory.name}}</span>
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button"
+                  id="selectedCategory">
+                <li id="selectedCategory-{{$index}}" role="menuitem" ng-repeat="item in vm.category track by $index">
+                  <a ng-click="vm.selectCategory(item)">{{item.name}}</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 selected-date">
+            {{vm.selectedDate | date:'yyyy年MM月dd日'}} 日程安排
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" id="returnToList" name="returnToList">
+            <button class="btn btn-xl btn-view pull-right" ui-sref="{{vm.fromState}}">返回2016日程列表</button>
+          </div>
+        </div>
+        <div class="row" ng-show="vm.selectedCategory.id">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="text-align: center;" id="scheduleInfo"
+               name="scheduleInfo">
+            <div class="content">
+              <textarea id="scheduleContent" class="form-control" rows="10" maxlength="300" ng-show="!vm.readOnly"
+                        ng-disabled="!vm.toggleUpdate" ng-model="vm.scheduleInfo.content">{{vm.scheduleInfo.content | textWrapper: '<br>'}}</textarea>
+              <div ng-show="vm.readOnly" ng-model="vm.scheduleInfo.content">
+                <pre id="scheduleContentView">{{vm.scheduleInfo.content}}</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row" ng-show="!vm.selectedCategory.id">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="allScheduleInfo" name="allScheduleInfo">
+            <div ng-repeat="schedule in vm.allScheduleInfo">
+              <p>{{schedule.name}}</p>
+              <div class="content">
+                <pre>{{schedule.content}}</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row" ng-show="!vm.readOnly && vm.selectedCategory.id">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <button class="btn btn-primary pull-left"
+                    ng-disabled="!vm.selectedCategory"
+                    ng-click="vm.saveSchedule()" id="edit" name="edit">
+              <span ng-show="vm.toggleUpdate">提交</span>
+              <span ng-show="!vm.toggleUpdate">编辑</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

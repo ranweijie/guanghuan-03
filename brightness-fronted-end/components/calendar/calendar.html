@@ -1,0 +1,8 @@
+<div class="hna-calendar">
+  <div class="mask" ng-hide="clickable"></div>
+  <uib-datepicker ng-model="date" class="well well-sm"
+                  datepicker-options="options"
+                  ng-change="datePickerSelected(date)"
+                  ng-class="theme ? theme : 'calendar-norm'">
+  </uib-datepicker>
+</div>

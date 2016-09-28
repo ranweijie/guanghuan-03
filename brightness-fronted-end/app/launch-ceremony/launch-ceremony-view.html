@@ -1,0 +1,179 @@
+<div class="launch-ceremony">
+  <div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+      <div class="panel info-panel ceremony-date-box">
+        <div class="panel-body">
+          <div class="row ">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 info-label">
+              <i class="icon ui-icon-date"></i>举办日期
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 info-text" id="date">
+              {{vm.launchCeremony.date | date: date:'yyyy年MM月dd日' | replaceEmptyText}}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 info-label">
+              <i class="icon ui-icon-time"></i>开始时间
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 info-text" id="startTime" name="startTime">
+              {{vm.launchCeremony.start_time | date: 'hh:mm' | replaceEmptyText}}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 info-label">
+              <i class="icon ui-icon-time"></i>结束时间
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 info-text" id="endTime" name="endTime">
+              {{vm.launchCeremony.end_time | date: 'hh:mm' | replaceEmptyText}}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 info-label">
+              <i class="icon ui-icon-address"></i>举办地点
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 info-text" id="location" name="location">
+              {{vm.launchCeremony.address | replaceEmptyText}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+      <div class="panel info-panel">
+        <img ng-src="{{vm.peopleBg}}" class="panel-bg-image">
+        <div class="panel-body">
+          <div class="row info-label">
+            <i class="icon ui-icon-people"></i>参加的海航领导
+          </div>
+          <div class="row info-text leaders-name-detail" id="hnaLeads" name="hnaLeads">
+            {{vm.launchCeremony.hna_leader | replaceEmptyText}}
+          </div>
+
+          <div class="row info-label">
+            <i class="icon ui-icon-people"></i>其他领导
+          </div>
+          <div class="row info-text leaders-name-detail" id="otherLeads" name="otherLeads">
+            {{vm.launchCeremony.other_leader | replaceEmptyText}}
+          </div>
+
+          <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 info-label">
+              <i class="icon ui-icon-people"></i>揭纱布人数
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 info-text" id="ceremonyPeopleNum" name="ceremonyPeopleNum">
+              <span ng-if="vm.isNumber(vm.launchCeremony.number_of_patient)">{{vm.launchCeremony.number_of_patient}}</span>人
+              <span ng-if="!vm.isNumber(vm.launchCeremony.number_of_patient)">暂无</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12 col-md-12 clo-sm-12">
+      <div class="panel info-panel">
+        <img ng-src="{{vm.messageBg}}" class="panel-bg-image">
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 head-people-content">
+              <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 info-label">
+                  <i class="icon ui-icon-people"></i>当地政府负责人
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 info-text" id="localDirector">
+                  {{vm.launchCeremony.local_government.name | replaceEmptyText}}
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 info-label">
+                  <i class="icon ui-icon-phone"></i>联系方式
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 info-text" id="localDirectorPhone" name="localDirectorPhone">
+                  {{vm.launchCeremony.local_government.contact_info | replaceEmptyText}}
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 head-people-content">
+              <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 info-label">
+                  <i class="icon ui-icon-people"></i>海航负责人
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 info-text" id="hnaDirector" name="hnaDirector">
+                  {{vm.launchCeremony.hna.name | replaceEmptyText}}
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 info-label">
+                  <i class="icon ui-icon-phone"></i>联系方式
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 info-text" id="hnaDirectorPhone" name="hnaDirectorPhone">
+                  {{vm.launchCeremony.hna.contact_info | replaceEmptyText}}
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 head-people-content">
+              <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 info-label">
+                  <i class="icon ui-icon-people"></i>其他负责人
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 info-text" id="otherDirector" name="otherDirector">
+                  {{vm.launchCeremony.other.name | replaceEmptyText}}
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 info-label">
+                  <i class="icon ui-icon-phone"></i>联系方式
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 info-text" id="otherDirectorPhone" name="otherDirectorPhone">
+                  {{vm.launchCeremony.other.contact_info | replaceEmptyText}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="panel info-panel agenda">
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <i class="icon ui-icon-notes"></i>活动安排
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+            <div class="table-responsive">
+              <span ng-if="!vm.launchCeremony.agenda.length">暂无</span>
+              <table ng-if="vm.launchCeremony.agenda.length" class="table panel-table">
+                <thead>
+                <tr>
+                  <th>序号</th>
+                  <th>时间</th>
+                  <th>活动安排</th>
+                  <th>备注</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr id="agenda{{$index}}" ng-repeat="agenda in vm.launchCeremony.agenda">
+                  <td id="number{{$index}}">{{$index+1}}</td>
+                  <td id="time{{$index}}">{{agenda.start_time}} - {{agenda.end_time}}</td>
+                  <td id="content{{$index}}">{{agenda.content | replaceEmptyText}}</td>
+                  <td id="note{{$index}}">{{agenda.note | replaceEmptyText}}</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row" ng-if="vm.showUpdateButton">
+    <div class="col-lg-12">
+      <button class="btn btn-lg btn-submit btn-bottom" ui-sref="base.launchCeremonyForm" id="update">编辑</button>
+    </div>
+  </div>
+</div>

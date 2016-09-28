@@ -1,0 +1,37 @@
+$bootstrap-sass-asset-helper: false;
+
+//== Colors
+//
+//## Gray and brand colors for use across Bootstrap.
+$brand-primary: $brand-primary-blue;
+$btn-primary-border: $brand-primary-blue-dark;
+
+
+//== Scaffolding
+//** Background color for `<body>`.
+$body-bg: #eff0f4;
+//** Global text color on `<body>`.
+$text-color: #4a4a4a;
+
+
+//== Typography
+//
+//## Font, line-height, and color for body text, headings, and more.
+$font-family-sans-serif: "Helvetica Neue", Helvetica, "Microsoft YaHei", FreeSans, Arimo, "Droid Sans", "wenquanyi micro hei", "Hiragino Sans GB", "Hiragino Sans GB W3", Arial, sans-serif;
+$text-font: FZDaHei-B01S, $font-family-sans-serif;
+$text-font-strong: FZDaHei-B02S, $font-family-sans-serif;
+
+//== Iconography
+$icon-font-path: "../node_modules/bootstrap-sass/assets/fonts/bootstrap/";
+
+//== Panels
+$panel-body-padding: 0;
+$panel-heading-padding: 0 0 10px 0;
+
+
+//== Grid system
+$grid-gutter-width: 0;
+
+
+//== Tables
+$table-bg-accent: #eef4fc;

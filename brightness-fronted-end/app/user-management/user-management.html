@@ -1,0 +1,124 @@
+<div class="userManagement">
+  <div class="panel info-panel">
+    <div class="panel-body">
+      <form name="userInfoForm" novalidate>
+        <div class="row">
+          <div class="col-xs-12 col-md-6 col-lg-6">
+            <div class="form-group"
+                 ng-class="{'has-error':vm.invalidLength(userInfoForm.userName, userInfoForm)
+                 || vm.requiredField(userInfoForm.userName, userInfoForm)
+                 || userInfoForm.userName.$error.hnaUniqueUsername}">
+              <label for="userName" class="required-label">用户名</label>
+              <input type="text" class="form-control" id="userName" name="userName" autocomplete="off"
+                     minlength="3" maxlength="16" required ng-readOnly="vm.isUpdate"
+                     ng-model="vm.userInfo.username" hna-unique-username
+                     ng-model-options="{ updateOn: 'default blur', debounce: { 'default': 500, 'blur': 0 } }">
+              <p class="help-block"
+                 ng-show="vm.requiredField(userInfoForm.userName, userInfoForm)">
+                <i class="glyphicon glyphicon-remove-circle"></i>请填写用户名
+              </p>
+              <p class="help-block"
+                 ng-show="vm.invalidLength(userInfoForm.userName, userInfoForm)">
+                <i class="glyphicon glyphicon-remove-circle"></i>用户名长度为3-16位
+              </p>
+              <p class="help-block"
+                 ng-show="userInfoForm.userName.$error.hnaUniqueUsername">
+                <i class="glyphicon glyphicon-remove-circle"></i>用户名已存在
+              </p>
+            </div>
+          </div>
+          <div class="col-xs-12 col-md-6 col-lg-6">
+            <div class="form-group"
+                 ng-class="{'has-error':vm.requiredField(userInfoForm.roleCode, userInfoForm)}">
+              <label class="required-label">用户权限</label>
+              <select name="roleCode" class="form-control"
+                      ng-model="vm.userInfo.roleCode" required>
+                <option ng-repeat="role in vm.roleList track by $index"
+                        value="{{role.roleCode}}">{{role.roleName}}
+                </option>
+              </select>
+              <p class="help-block"
+                 ng-show="vm.requiredField(userInfoForm.roleCode, userInfoForm)">
+                <i class="glyphicon glyphicon-remove-circle"></i>请选择用户角色
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 col-md-6 col-lg-6">
+            <div class="form-group">
+              <label for="realName">真实姓名</label>
+              <input type="text" class="form-control" id="realName" name="realName"
+                     ng-model="vm.userInfo.realname">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-6 col-md-3 col-lg-2">
+            <button type="button" class="btn btn-lg btn-cancel" ng-click="vm.resetUserInfo()" id="reset">取消
+            </button>
+          </div>
+          <div class="col-xs-6 col-md-3 col-lg-2">
+            <button type="submit" class="btn btn-lg btn-submit" id="submit" name="submit"
+                    ng-click="vm.submitForm(userInfoForm)">提交
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="panel info-panel">
+    <div class="panel-heading">
+      <div class="panel-title">
+        <h4>用户列表</h4>
+      </div>
+    </div>
+    <div class="panel-body">
+      <div class="row user-list">
+        <div class="col-lg-6 col-md-6 col-xs-12 col-lg-offset-6 col-md-offset-6">
+          <uib-pagination total-items="vm.userInfoList.length"
+                          ng-model="vm.currentPage"
+                          items-per-page="vm.pageSize"
+                          class="pagination-sm pull-right"
+                          boundary-link-numbers="true"
+                          rotate="false"
+                          previous-text="上一页"
+                          next-text="下一页"
+                          ng-change="vm.onChange()">
+          </uib-pagination>
+        </div>
+        <table class="table panel-table">
+          <thead>
+          <tr>
+            <th><input type="checkbox" ng-model="vm.isCheckedAll" ng-click="vm.toggleAll()"></th>
+            <th>用户权限</th>
+            <th>用户名</th>
+            <th>真实姓名</th>
+            <th></th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr ng-repeat="user in vm.userList = vm.userInfoList | startFrom:(vm.currentPage-1)*vm.pageSize | limitTo:vm.pageSize track by $index">
+            <td><input type="checkbox" value={{user.userId}} ng-model="user.selected"
+                       ng-change="vm.optionToggled()"></td>
+            <td>{{user.roleCode | roleCodeChanged:vm.roleList}}</td>
+            <td>{{user.username}}</td>
+            <td>{{user.realname}}</td>
+            <td>
+              <button class="btn btn-small btn-submit" ng-click="vm.updateUser(user)" id="updateBtn_{{$index}}">
+                <i class="glyphicon glyphicon-pencil"></i> 编辑
+              </button>
+              <button class="btn btn-small btn-delete" ng-click="vm.deleteUser(user)" id="deleteBtn_{{$index}}">删除</button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="row group-btn">
+    <button class="btn btn-lg btn-delete" ng-click="vm.deleteSelectUser()" id="deleteSelectBtn">删除所选用户</button>
+    <button class="btn btn-lg btn-view" ng-click="vm.ResetSelectUser()" id="resetSelectBtn">重置所选用户</button>
+    <button class="btn btn-lg btn-submit" ng-click="vm.ExportSelectUser()" id="exportSelectBtn">导出所选用户</button>
+  </div>
+</div>

@@ -1,0 +1,62 @@
+@import "../../styles/variables";
+
+.participants {
+
+  .participant-member-box {
+    position: relative;
+    height: 200px;
+    text-align: center;
+
+    .participant-member {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      border-right: solid 1px $bg-gray-dark;
+      transform: translateY(-50%);
+    }
+
+    strong {
+      font-weight: normal;
+      font-size: $text-extra-large;
+      color: $brand-primary-orange;
+    }
+
+    span {
+      font-size: $font-xxl;
+    }
+  }
+
+  .table {
+    th {
+      &:first-child {
+        width: 20%;
+      }
+      &:nth-child(2) {
+        width: 20%;
+      }
+    }
+    td {
+      white-space: nowrap;
+    }
+  }
+
+  .pagination {
+    margin: 0;
+  }
+
+  .btn-setting {
+    width: 80px;
+    height: 30px;
+    background-color: $brand-primary-orange;
+    &:hover {
+      background-color: $brand-primary-orange-dark;
+    }
+  }
+  .btn-leader {
+    padding: 0.1rem 0;
+    width: 5.4rem;
+    border-radius: 1rem;
+    font-size: 1.1rem;
+  }
+}

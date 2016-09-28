@@ -1,0 +1,258 @@
+<div class="finance-info">
+  <div class="col-lg-12 finance-basic-info">
+    <div class="panel info-panel">
+      <form name="financeForm" novalidate>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-xs-6 col-md-6 col-lg-6">
+              <div class="form-group"
+                   ng-class="{'has-error': vm.invalidNumber(financeForm.budget, financeForm)}">
+                <span>预算 </span>
+                <input type="number" class="form-control budget-input" id="budget" name="budget" ng-model="vm.finance.budget" max="999999999" min="0">
+                <span>元</span>
+                <p class="help-block"
+                   ng-show="vm.invalidNumber(financeForm.budget, financeForm)">
+                  <i class="glyphicon glyphicon-remove-circle"></i>金额范围为0~999999999
+                </p>
+              </div>
+            </div>
+            <div class="col-xs-6 col-md-6 col-lg-6">
+              <div class="form-group"
+                   ng-class="{'has-error': vm.invalidNumber(financeForm.cost, financeForm)}">
+                <span>实际 </span>
+                <input type="number" class="form-control budget-input" id="cost" name="cost" ng-model="vm.finance.cost" max="999999999" min="0">
+                <span>元</span>
+                <p class="help-block"
+                   ng-show="vm.invalidNumber(financeForm.cost, financeForm)">
+                  <i class="glyphicon glyphicon-remove-circle"></i>金额范围为0~999999999
+                </p>
+              </div>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-xs-12 col-md-12 col-lg-12">
+              <div class="form-group">
+                <label for="description"><i class="icon ui-icon-introduction"></i>说明</label>
+              <textarea name="description" id="description" class="form-control"
+                        ng-model="vm.finance.content" rows="5" maxlength="300"></textarea>
+              </div>
+              <button class="btn btn-lg btn-submit pull-right" ng-click="vm.submitForm(financeForm)">保存</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="col-lg-12 finance-usage">
+    <div class="panel info-panel">
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-xs-6 col-md-6 col-lg-6">
+            <p>经费使用记录</p>
+            <button class="btn btn-sm btn-success pull-left" id="add" ng-click="vm.addFinanceUsage()">
+              + 增加记录
+            </button>
+          </div>
+          <div class="col-xs-6 col-md-6 col-lg-6" style="text-align:right;">
+            <span>金额 ( {{vm.filter || '总计'}} )</span>
+            <span>{{vm.totalAccount || 0}}元</span>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-xs-12 col-md-12 col-lg-12">
+            <form name="feeUsageForm" novalidate class="finance-usage-form">
+              <table class="table panel-table">
+                <thead>
+                <tr>
+                  <th width="20%">日期</th>
+                  <th width="25%">
+                    <div uib-dropdown>
+                      <span id="usageFilterButton" name="singleButton"
+                            uib-dropdown-toggle>
+                        <span>{{vm.filter || '经费用途'}} </span>
+                        <span class="caret"></span>
+                      </span>
+                      <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button"
+                          id="selectedUsageFilter">
+                        <li id="selectedUsageOption-{{$index}}" role="menuitem"
+                            ng-repeat="item in vm.financeUsageFilterOption track by $index">
+                          <a ng-click="vm.filterListBy(item)">{{item}}</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </th>
+                  <th width="10%">金额</th>
+                  <th width="15%">有无发票</th>
+                  <th width="15%">备注</th>
+                  <th width="15%">
+                  </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr
+                  ng-repeat="item in filteredFinanceUsageList = vm.financeUsageList | filter:{usage: vm.filter} | startFrom:(vm.currentPage-1)*vm.pageSize | limitTo:vm.pageSize track by $index">
+                  <td>
+                    <span ng-show="!item.isEditing">{{item.date}}</span>
+                    <hna-popup-calendar date="item.date" id='date' name="date"
+                                        ng-model="item.date"
+                                        ng-if="item.isEditing"
+                                        is-required="true">
+                    </hna-popup-calendar>
+                  </td>
+                  <td>
+                    <span ng-if="!item.isEditing">{{item.usage}}</span>
+                    <div ng-if="item.isEditing">
+                      <div class="input-group"
+                           ng-class="{'has-error':vm.requiredField(feeUsageForm.usage, feeUsageForm)}">
+                        <input type="text" id="usage" name="usage" class="form-control" ng-model="item.usage" required>
+                        <div class="input-group-btn">
+                          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                                  aria-haspopup="true" aria-expanded="false"><span class="caret"></span></button>
+                          <ul class="dropdown-menu dropdown-menu-right">
+                            <li id="selectedUsage-{{$index}}" role="menuitem"
+                                ng-repeat="usageOption in vm.financeUsageOption track by $index">
+                              <a ng-click="vm.setUsage(item, usageOption)">{{usageOption}}</a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="has-error">
+                        <p class="help-block"
+                           ng-show="vm.requiredField(feeUsageForm.usage, feeUsageForm)">
+                          <i class="glyphicon glyphicon-remove-circle"></i>请填写经费用途
+                        </p>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <span ng-if="!item.isEditing">{{item.amount}}</span>
+                    <div class="input-group"
+                         ng-class="{'has-error':vm.requiredField(feeUsageForm.amount, feeUsageForm)}"
+                         ng-if="item.isEditing">
+                      <input class="form-control" id="amount" name="amount" type="number" ng-model="item.amount" min="0" required>
+                      <p class="help-block"
+                         ng-show="vm.requiredField(feeUsageForm.amount, feeUsageForm)">
+                        <i class="glyphicon glyphicon-remove-circle"></i>请填写金额
+                      </p>
+                    </div>
+                  </td>
+                  <td>
+                    <span ng-if="!item.isEditing">
+                      <span ng-if="item.has_invoice">有</span>
+                      <span ng-if="!item.has_invoice">无</span>
+                    </span>
+                    <div class="input-group" ng-if="item.isEditing">
+                      <div class="btn-group" uib-dropdown>
+                        <button id="hasInvoice" name="hasInvoice" type="button" class="btn btn-primary"
+                                uib-dropdown-toggle>
+                          <span>{{item.has_invoice ? '有' : '无'}} </span>
+                          <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button"
+                            id="hasInvoiceOption">
+                          <li role="menuitem">
+                            <a ng-click="vm.setHasInvoice(item, true)">有</a>
+                          </li>
+                          <li role="menuitem">
+                            <a ng-click="vm.setHasInvoice(item, false)">无</a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <span ng-if="!item.isEditing">{{item.remark}}</span>
+                    <input id="remark" class="form-control" type="text" ng-model="item.remark" ng-if="item.isEditing">
+                  </td>
+                  <td>
+                    <button class="btn btn-sm btn-submit" id="edit" ng-click="vm.editFinanceUsage(item)"
+                            ng-if="!item.isEditing">
+                      <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                    </button>
+                    <button class="btn btn-sm btn-submit" id="save" type="submit"
+                            ng-click="vm.saveFinanceUsage(feeUsageForm, item)"
+                            ng-if="item.isEditing">
+                      保存
+                    </button>
+                    <button class="btn btn-sm btn-delete" id="delete" ng-click="vm.deleteFinanceUsage(item)">-
+                    </button>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+            </form>
+            <div>
+              <uib-pagination total-items="(vm.financeUsageList | filter:{usage: vm.filter}).length"
+                              ng-model="vm.currentPage"
+                              items-per-page="vm.pageSize"
+                              class="pagination-sm finance-pagination pull-right"
+                              boundary-link-numbers="true"
+                              rotate="false"
+                              previous-text="上一页"
+                              next-text="下一页"
+                              max-size="0"
+                              ng-change="vm.onChange()">
+              </uib-pagination>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="finance-file-upload">
+    <div class="row">
+      <div class="col-xs-12 col-md-12 col-lg-12">
+        <div class="panel info-panel">
+          <div class="panel-heading">
+            <h3 class="panel-title">上传经费相关文件</h3>
+          </div>
+          <div class="panel-body">
+            <div class="col-xs-12 col-md-12 col-lg-12 file-list-box">
+              <table class="table">
+                <thead>
+                <tr>
+                  <th width="30%"></th>
+                  <th width="40%"></th>
+                  <th width="20%"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="doc in vm.docList">
+                  <td><a href="" ng-click="vm.downloadFile(doc.file)">{{doc.file.name}}</a></td>
+                  <td>
+                    <div class="progress" ng-show="doc.progress >= 0 && doc.progress != 100">
+                      <div class="progress-bar" role="progressbar" ng-style="{'width': doc.progress + '%'}"></div>
+                    </div>
+                  </td>
+                  <td class="action-box" nowrap>
+                    <button type="button" class="btn btn-small btn-delete" ng-click="vm.delete(doc)" ng-if="doc._id">
+                      <span class="glyphicon glyphicon-trash"></span> 删除
+                    </button>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+
+              <div class="upload-box drop-zone"
+                   ngf-drop="vm.uploadFile($file, $invalidFiles)"
+                   ngf-drag-over-class="'drag-over'"
+                   ngf-pattern="'application/pdf,application/vnd.ms-excel,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'"
+                   ngf-max-size="20MB">
+                <button class="btn btn-xxl btn-view" id="upload" type="button"
+                        ngf-select="vm.uploadFile($file, $invalidFiles)"
+                        ngf-pattern="'application/pdf,application/vnd.ms-excel,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'"
+                        ngf-max-size="20MB">选择文件
+                </button>
+                <p class="upload-tips">请选择或拖拽上传文件(Word, Excel, PDF), 限制每个文件大小20M以内</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+.hotel-list {
+  .panel-heading {
+    border: none;
+  }
+  .hotel-list-table {
+    padding: 10px;
+    border: 1px dashed #ccc;
+    border-radius: 4px;
+    table {
+      .td-content {
+        width: 80%;
+      }
+      .td-button {
+        width: 10%;
+      }
+      button {
+        width: 80%;
+      }
+    }
+  }
+}

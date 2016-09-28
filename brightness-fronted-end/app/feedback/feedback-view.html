@@ -1,0 +1,116 @@
+<div class="feedback-view">
+  <div class="panel info-panel">
+    <div class="panel-heading">
+      <h3 class="panel-title">平均分与分数分布</h3>
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-xs-12 col-md-3 col-lg-3 feedback-view-box">
+          <div class="feedback-number">
+            <span ng-if="vm.averageScore">平均<strong>{{vm.averageScore | number:1}}</strong>分</span>
+            <span ng-if="!vm.averageScore">暂无</span>
+          </div>
+        </div>
+        <div class="col-xs-12 col-md-9 col-lg-9">
+          <hna-bar-chart data="vm.chartData"></hna-bar-chart>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="panel info-panel">
+    <div class="panel-heading">
+      <div class="row">
+        <div class="col-xs-6 col-md-6 col-lg-6">
+          <h3 class="panel-title">做的好</h3>
+        </div>
+        <div class="col-xs-6 col-md-6 col-lg-6">
+          <uib-pagination total-items="vm.feedbackList.length"
+                          ng-model="vm.currentPage.well"
+                          items-per-page="vm.pageSize"
+                          class="pagination-sm pull-right"
+                          boundary-link-numbers="true"
+                          rotate="false"
+                          previous-text="上一页"
+                          next-text="下一页"
+                          ng-change="vm.onChangeWellList()">
+          </uib-pagination>
+        </div>
+      </div>
+    </div>
+    <div class="panel-body">
+      <table ng-if="vm.wellList.length" class="table panel-table">
+        <thead></thead>
+        <tbody>
+        <tr id="well{{$index}}" ng-repeat="item in vm.wellList track by $index">
+          <td id="wellContent{{$index}}">{{item}}</td>
+        </tr>
+        </tbody>
+      </table>
+      <span ng-if="!vm.wellList.length">暂无</span>
+    </div>
+  </div>
+  <div class="panel info-panel">
+    <div class="panel-heading">
+      <div class="row">
+        <div class="col-xs-6 col-md-6 col-lg-6">
+          <h3 class="panel-title">做的不好</h3>
+        </div>
+        <div class="col-xs-6 col-md-6 col-lg-6">
+          <uib-pagination total-items="vm.feedbackList.length"
+                          ng-model="vm.currentPage.lessWell"
+                          items-per-page="vm.pageSize"
+                          class="pagination-sm pull-right"
+                          boundary-link-numbers="true"
+                          rotate="false"
+                          previous-text="上一页"
+                          next-text="下一页"
+                          ng-change="vm.onChangeLessWellList()">
+          </uib-pagination>
+        </div>
+      </div>
+    </div>
+    <div class="panel-body">
+      <table ng-if="vm.lessWellList.length" class="table panel-table">
+        <thead></thead>
+        <tbody>
+        <tr id="lessWell{{$index}}" ng-repeat="item in vm.lessWellList track by $index">
+          <td id="lessWellContent{{$index}}">{{item}}</td>
+        </tr>
+        </tbody>
+      </table>
+      <span ng-if="!vm.lessWellList.length">暂无</span>
+    </div>
+  </div>
+  <div class="panel info-panel">
+    <div class="panel-heading">
+      <div class="row">
+        <div class="col-xs-6 col-md-6 col-lg-6">
+          <h3 class="panel-title">还想说点什么</h3>
+        </div>
+        <div class="col-xs-6 col-md-6 col-lg-6">
+          <uib-pagination total-items="vm.feedbackList.length"
+                          ng-model="vm.currentPage.comment"
+                          items-per-page="vm.pageSize"
+                          class="pagination-sm pull-right"
+                          boundary-link-numbers="true"
+                          rotate="false"
+                          previous-text="上一页"
+                          next-text="下一页"
+                          ng-change="vm.onChangeCommentList()">
+          </uib-pagination>
+        </div>
+      </div>
+    </div>
+    <div class="panel-body">
+      <table ng-if="vm.commentList.length" class="table panel-table">
+        <thead></thead>
+        <tbody>
+        <tr id="comment{{$index}}" ng-repeat="item in vm.commentList track by $index">
+          <td id="commentContent{{$index}}">{{item}}</td>
+        </tr>
+        </tbody>
+      </table>
+      <span ng-if="!vm.commentList.length">暂无</span>
+    </div>
+  </div>
+</div>

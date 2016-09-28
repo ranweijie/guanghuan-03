@@ -1,0 +1,44 @@
+@import "../../styles/variables";
+
+.basic-info {
+  .project-members-table {
+    th {
+      &:nth-child(1) {
+        width: 32%;
+      }
+      &:nth-child(2) {
+        width: 28%;
+      }
+    }
+    tbody tr{
+      &:first-child {
+        color: $brand-primary-blue;
+      }
+    }
+  }
+  .icon {
+    color: #6AAAF3;
+  }
+  .other-info-container {
+    padding-bottom: 0;
+    .other-info-text {
+      margin-bottom: 20px;
+      margin-left: 25px;
+    }
+  }
+}
+
+@media screen and (max-width: $screen-xs-min) {
+  .basic-info {
+    .panel-body .mobile-schedule-container {
+      margin-bottom: 0;
+      .mobile-schedule-item {
+          padding-right: 10px;
+          margin-bottom: 10px;
+      }
+    }
+  }
+}
+
+
+

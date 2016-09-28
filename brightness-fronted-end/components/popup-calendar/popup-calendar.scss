@@ -1,0 +1,32 @@
+@import "../../styles/variables";
+
+.uib-daypicker{
+  strong{
+    color: $text-color;
+    font-size: inherit;
+  }
+  .btn{
+    color: $text-color;
+  }
+}
+
+.hna-popup-calendar {
+  .btn {
+    color: $text-color;
+    height: 30px;
+    &:hover {
+      color: #000;
+    }
+  }
+}
+
+.full button span {
+  background-color: limegreen;
+  border-radius: 32px;
+  color: black;
+}
+.partially button span {
+  background-color: orange;
+  border-radius: 32px;
+  color: black;
+}

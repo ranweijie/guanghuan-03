@@ -1,0 +1,163 @@
+<div class="hospital-view">
+
+  <div class="row">
+    <div class="col-xs-12 col-md-4 col-lg-4 hospital-detail-info">
+      <div class="row">
+        <div class="col-xs-12 col-md-12 col-lg-12">
+          <div class="panel info-panel">
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-xs-6 col-md-6 col-lg-6 info-label"><i class="icon ui-icon-hospital"></i>医院名称</div>
+                <div class="col-xs-6 col-md-6 col-lg-6 info-text" id="hospitalName">{{vm.hospitalInfo.name |
+                  replaceEmptyText}}</div>
+              </div>
+              <div class="row">
+                <div class="col-xs-6 col-md-6 col-lg-6 info-label"><i class="icon ui-icon-address"></i>医院地址</div>
+                <div class="col-xs-6 col-md-6 col-lg-6 info-text" id="address">
+                  {{vm.hospitalInfo.address | replaceEmptyText}}
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-6 col-md-6 col-lg-6 info-label"><i class="icon  ui-icon-people"></i>联系人</div>
+                <div class="col-xs-6 col-md-6 col-lg-6 info-text" id="contactName">{{vm.hospitalInfo.contact_name |
+                  replaceEmptyText}}</div>
+              </div>
+              <div class="row">
+                <div class="col-xs-6 col-md-6 col-lg-6 info-label"><i class="icon ui-icon-phone"></i>联系方式</div>
+                <div class="col-xs-6 col-md-6 col-lg-6 info-text" id="contactInfo">{{vm.hospitalInfo.contact_tel |
+                  replaceEmptyText}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-md-12 col-lg-12">
+          <div class="panel info-panel">
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-xs-6 col-md-6 col-lg-6 info-label"><i class="icon ui-icon-department"></i>科室设置</div>
+                <div class="col-xs-6 col-md-6 col-lg-6 info-text"
+                     id="departmentSets">{{vm.hospitalInfo.has_ophthalmology_department | replaceEmptyText}}</div>
+              </div>
+              <div class="row">
+                <div class="col-xs-6 col-md-6 col-lg-6 info-label"><i class="icon ui-icon-device"></i>现有仪器</div>
+                <div class="col-xs-6 col-md-6 col-lg-6 info-text" id="equipments">{{vm.hospitalInfo.equipments|
+                  arrayReplaceToString | replaceEmptyText}}</div>
+              </div>
+              <div class="row">
+                <div class="col-xs-6 col-md-6 col-lg-6 content-strong title-strong info-label"><i
+                        class="icon ui-icon-department"></i>手术室数量</div>
+                <div class="col-xs-6 col-md-6 col-lg-6 content-strong info-text" id="operationRoomCount">
+                  <span ng-if="vm.isNumber(vm.hospitalInfo.operation_room_count)">
+                    <strong class="num-operation-room">{{vm.hospitalInfo.operation_room_count}}</strong>间
+                  </span>
+                  <div class="title-strong" ng-if="!vm.isNumber(vm.hospitalInfo.operation_room_count)">暂无</div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-6 col-md-6 col-lg-6 content-strong title-strong info-label"><i
+                        class="icon ui-icon-people"></i>眼科医生数量</div>
+                <div class="col-xs-6 col-md-6 col-lg-6 content-strong info-text" id="doctorCount">
+                  <span ng-if="vm.isNumber(vm.hospitalInfo.doctor_count)">
+                    <strong class="num-doctor">{{vm.hospitalInfo.doctor_count}}</strong>人
+                  </span>
+                  <div class="title-strong" ng-if="!vm.isNumber(vm.hospitalInfo.doctor_count)">暂无</div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-6 col-md-6 col-lg-6 content-strong title-strong info-label"><i
+                        class="icon ui-icon-people"></i>护士数量</div>
+                <div class="col-xs-6 col-md-6 col-lg-6 content-strong info-text" id="nurseCount">
+                  <span ng-if="vm.isNumber(vm.hospitalInfo.nurse_count)">
+                    <strong class="num-nurse">{{vm.hospitalInfo.nurse_count}}</strong>人
+                  </span>
+                  <div class="title-strong" ng-if="!vm.isNumber(vm.hospitalInfo.nurse_count)">暂无</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-12 col-md-8 col-lg-8">
+      <div class="panel info-panel">
+        <div class="panel-heading">
+          <h3 class="panel-title"><i class="icon ui-icon-map"></i>医院地理位置</h3>
+        </div>
+        <div class="panel-body">
+          <hna-geo-map lng="vm.hospitalInfo.hospital_location.longitude" lat="vm.hospitalInfo.hospital_location.latitude"
+                       adjust-height=".hospital-detail-info"
+                       draggable="false"></hna-geo-map>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12 col-md-12 col-lg-12">
+      <div class="panel info-panel">
+        <div class="panel-heading">
+          <h3 class="panel-title"><i class="icon ui-icon-photos"></i>医院照片</h3>
+        </div>
+        <div class="panel-body" id="picture">
+          <div ng-if="!vm.hospitalInfo.photos.length">暂无</div>
+          <ul ng-if="vm.hospitalInfo.photos.length" class="photos">
+            <li ng-repeat="photo in vm.hospitalInfo.photos">
+              <a target="_blank" href="{{photo.file.src}}">
+                <img class="img-responsive img-rounded" ng-src="{{photo.file.src}}">
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row clearfix">
+    <div class="col-xs-12 col-md-12 col-lg-12">
+      <div class="panel info-panel">
+        <div class="panel-heading">
+          <h3 class="panel-title"><i class="icon ui-icon-introduction"></i>医院考察结论</h3>
+        </div>
+        <div class="panel-body clear-bottom flex-col">
+          <div class="row">
+            <div class="col-lg-1 col-md-1 col-xs-1">
+              <img ng-src="{{vm.upQuote}}" class="panel-bg-xsmall">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-xs-10 col-xs-offset-1 conclusion" id="conclusion">
+              <p>{{vm.hospitalInfo.result | replaceEmptyText | textWrapper}}</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-1 col-lg-offset-11 col-md-1 col-md-offset-11 col-xs-1 col-xs-offset-11">
+              <img ng-src="{{vm.downQuote}}" class="panel-bg-xsmall">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12 col-md-12 col-lg-12">
+      <div class="panel info-panel">
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-xs-4 col-md-4 col-lg-4">是否满足需求</div>
+            <div class="col-xs-8 col-md-8 col-lg-8" id="qualified">{{vm.hospitalInfo.is_match_required | replaceEmptyText}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div ng-if="vm.showUpdateButton" class="row">
+    <div class="col-xs-12 col-md-12 col-lg-12">
+      <button class="btn btn-lg btn-submit btn-bottom" ui-sref="base.hospital.form({id: vm.hospitalInfo._id})" id="update">编辑</button>
+    </div>
+  </div>
+
+</div>

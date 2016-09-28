@@ -1,0 +1,10 @@
+---
+- hosts: web
+  tasks:
+  - name: delete front
+    shell: rm -rf /data/app/*
+  - name: copy front
+    copy: src=./dist/ dest=/data/app/
+
+  - name: restart nginx
+    service: name=nginx state=restarted

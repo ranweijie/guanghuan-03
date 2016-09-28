@@ -1,0 +1,29 @@
+<ul class="main-menu nav nav-stacked sidebar-nav">
+
+	<li ng-repeat="item in Menu track by $index">
+
+		<a ng-bind="item.name"
+		   ng-if="checkHomePermission(item) && isShowForProjectSelected(item)"
+		   class="link"
+	       ui-sref-active="active"
+	       ui-sref="{{item.state ? item.state : null }}" >
+		</a>
+
+		<a ng-bind="item.name"
+		   ng-if="checkItemPermission(item) && isShowForProjectSelected(item)">
+		</a>
+
+		<ul class="sub-menu" ng-if="checkSubmenuPermission(item) && !item.projectNotSelected">
+			<li ng-repeat="subitem in item.subMenu track by $index"
+			    ng-if="checkSubItemPermission(subitem) && isShowForProjectSelected(item)">
+				<a ui-sref="{{subitem.state}}"
+				   ng-class="{active: (currentState.indexOf(subitem.activeState || subitem.state) > -1)}">
+					<img ng-src="{{subitem.icon}}" ng-if="!(currentState.indexOf(subitem.activeState || subitem.state) > -1)">
+					<img ng-src="{{subitem.activeIcon}}" ng-if="(currentState.indexOf(subitem.activeState || subitem.state) > -1)">
+					{{subitem.name}}
+				</a>
+			</li>
+		</ul>
+	</li>
+
+</ul>

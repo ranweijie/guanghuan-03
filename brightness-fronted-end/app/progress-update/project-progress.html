@@ -1,0 +1,246 @@
+<div class="progress-update">
+  <div class="row">
+    <div class="col-lg-4">
+      <div class="panel info-panel project-calendar-panel">
+        <div class="panel-body">
+          <hna-calendar start-date="vm.currentProject.info.schedule.start_date"
+                        end-date="vm.currentProject.info.schedule.end_date"
+                        clickable="false">
+          </hna-calendar>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-8">
+      <div>
+        <hna-progress-date-board start-date="{{vm.currentProject.info.schedule.start_date}}"
+                                 end-date="{{vm.currentProject.info.schedule.end_date}}">
+        </hna-progress-date-board>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel info-panel">
+        <div class="panel-body">
+          <form name="progressForm" novalidate>
+            <div class="form-group">
+              <label>患者就诊情况更新</label>
+            </div>
+            <div class="form-group"
+                 ng-class="{'has-error': vm.requiredField(progressForm.curedTillToday, progressForm) || vm.invalidNumber(progressForm.curedTillToday, progressForm)}">
+              <div class="row">
+                <div class="col-xs-12 col-md-6 col-lg-6">
+                  <label for="curedTillToday" class="required-label info-label normal-fw-label">到今天为止累计就诊人数</label>
+                  <input type="number" class="form-control" id="curedTillToday" name="curedTillToday"
+                         required min="0" max="99999" maxlength="5"
+                         ng-model="vm.data.cured_till_today">
+                  <p class="help-block"
+                     ng-show="vm.requiredField(progressForm.curedTillToday, progressForm)">
+                    <i class="glyphicon glyphicon-remove-circle"></i>请填写到今天为止累计就诊人数
+                  </p>
+                  <p class="help-block"
+                     ng-show="vm.invalidNumber(progressForm.curedTillToday, progressForm)">
+                    <i class="glyphicon glyphicon-remove-circle" id="curedTillTodayErrorMessage"></i>必须是数字，并且最大值为 99999
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>今日行程</label>
+            </div>
+
+            <div class="row">
+              <div class="col-xs-12 col-md-6 col-lg-6">
+                <div class="form-group"
+                     ng-class="{'has-error': vm.requiredField(progressForm.hotelName, progressForm)}">
+                  <label for="hotelName" class="required-label info-label normal-fw-label">入住酒店名称</label>
+                  <input type="text" class="form-control" id="hotelName" name="hotelName"
+                         required maxlength="30"
+                         ng-model="vm.data.hotel_name">
+                  <p class="help-block"
+                     ng-show="vm.requiredField(progressForm.hotelName, progressForm)">
+                    <i class="glyphicon glyphicon-remove-circle" id="hotelNameErrorMessage"></i>请填写入住酒店名称
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12 col-md-6 col-lg-6">
+                <div class="form-group"
+                     ng-class="{'has-error': vm.requiredField(progressForm.hotelAddress, progressForm)}">
+                  <label for="hotelAddress" class="required-label info-label normal-fw-label">酒店所在地址</label>
+                  <input type="text" class="form-control" id="hotelAddress" name="hotelAddress"
+                         required maxlength="100"
+                         ng-model="vm.data.hotel_address">
+                  <p class="help-block"
+                     ng-show="vm.requiredField(progressForm.hotelAddress, progressForm)">
+                    <i class="glyphicon glyphicon-remove-circle" id="hotelAddressErrorMessage"></i>请填写酒店所在地址
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="row">
+                <div class="col-xs-12 col-md-6 col-lg-6">
+                  <label>酒店地图位置</label>
+                  <hna-geo-map lng="vm.data.hotel_location.longitude"
+                               lat="vm.data.hotel_location.latitude"
+                               address="vm.data.hotel_location.address"
+                               draggable="true">
+                  </hna-geo-map>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="row">
+                <div class="col-xs-12 col-md-6 col-lg-6">
+                  <label for="notes" class="info-label normal-fw-label">行程备注</label>
+                  <textarea class="form-control" rows="3" id="notes" name="notes"
+                          ng-model="vm.data.journey_comment"
+                          maxlength="300">
+                  </textarea>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="row">
+                <div class="col-xs-12 col-md-6 col-lg-6">
+                  <label for="requirement" class="info-label normal-fw-label">特殊需求</label>
+                <textarea class="form-control" rows="3" id="requirement" name="requirement"
+                          ng-model="vm.data.special_need"
+                          maxlength="300"></textarea>
+                </div>
+              </div>
+            </div>
+            <button type="button" class="btn btn-default btn-primary btn-submit"
+                    ng-click="vm.submitForm(progressForm)" id="submit" name="submit">提交</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--<div class="row">-->
+  <!--<div class="col-lg-8">-->
+    <!--<div class="panel info-panel">-->
+      <!--<div class="panel-heading">-->
+        <!--<h6>更新今天的行程和诊治情况，*项为必填项</h6>-->
+      <!--</div>-->
+      <!--<div class="panel-body">-->
+        <!--<form name="progressForm" novalidate>-->
+          <!--<div class="form-group">-->
+            <!--<label>患者就诊情况更新</label>-->
+          <!--</div>-->
+          <!--<div class="form-group"-->
+               <!--ng-class="{'has-error': vm.requiredField(progressForm.curedTillToday, progressForm) || vm.invalidNumber(progressForm.curedTillToday, progressForm)}">-->
+            <!--<div class="row">-->
+              <!--<div class="col-xs-12 col-md-6 col-lg-6">-->
+                <!--<label class="required-label">到今天为止累计就诊人数</label>-->
+                <!--<input type="number" class="form-control" id="curedTillToday" name="curedTillToday"-->
+                       <!--required min="0" max="99999" maxlength="5"-->
+                       <!--ng-model="vm.data.cured_till_today">-->
+                <!--<p class="help-block"-->
+                   <!--ng-show="vm.requiredField(progressForm.curedTillToday, progressForm)">-->
+                  <!--<i class="glyphicon glyphicon-remove-circle"></i>请填写到今天为止累计就诊人数-->
+                <!--</p>-->
+                <!--<p class="help-block"-->
+                   <!--ng-show="vm.invalidNumber(progressForm.curedTillToday, progressForm)">-->
+                  <!--<i class="glyphicon glyphicon-remove-circle" id="curedTillTodayErrorMessage"></i>必须是数字，并且最大值为 99999-->
+                <!--</p>-->
+              <!--</div>-->
+            <!--</div>-->
+          <!--</div>-->
+
+          <!--<hr>-->
+
+          <!--<div class="form-group">-->
+            <!--<label>今日行程</label>-->
+          <!--</div>-->
+
+          <!--<div class="row">-->
+            <!--<div class="col-xs-12 col-md-6 col-lg-6">-->
+              <!--<div class="form-group"-->
+                   <!--ng-class="{'has-error': vm.requiredField(progressForm.hotelName, progressForm)}">-->
+                <!--<label for="hotelName" class="required-label">入住酒店名称</label>-->
+                <!--<input type="text" class="form-control" id="hotelName" name="hotelName"-->
+                       <!--required maxlength="30"-->
+                       <!--ng-model="vm.data.hotel_name">-->
+                <!--<p class="help-block"-->
+                   <!--ng-show="vm.requiredField(progressForm.hotelName, progressForm)">-->
+                  <!--<i class="glyphicon glyphicon-remove-circle" id="hotelNameErrorMessage"></i>请填写入住酒店名称-->
+                <!--</p>-->
+              <!--</div>-->
+            <!--</div>-->
+            <!--<div class="col-xs-12 col-md-6 col-lg-6">-->
+              <!--<div class="form-group"-->
+                   <!--ng-class="{'has-error': vm.requiredField(progressForm.hotelAddress, progressForm)}">-->
+                <!--<label for="hotelAddress" class="required-label">酒店所在地址</label>-->
+                <!--<input type="text" class="form-control" id="hotelAddress" name="hotelAddress"-->
+                       <!--required maxlength="100"-->
+                       <!--ng-model="vm.data.hotel_address">-->
+                <!--<p class="help-block"-->
+                   <!--ng-show="vm.requiredField(progressForm.hotelAddress, progressForm)">-->
+                  <!--<i class="glyphicon glyphicon-remove-circle" id="hotelAddressErrorMessage"></i>请填写酒店所在地址-->
+                <!--</p>-->
+              <!--</div>-->
+            <!--</div>-->
+          <!--</div>-->
+
+          <!--<div class="form-group">-->
+            <!--<label>酒店地图位置</label>-->
+            <!--<hna-geo-map lng="vm.data.hotel_location.longitude"-->
+                         <!--lat="vm.data.hotel_location.latitude"-->
+                         <!--address="vm.data.hotel_location.address"-->
+                         <!--draggable="true"></hna-geo-map>-->
+          <!--</div>-->
+
+          <!--<div class="form-group">-->
+            <!--<div class="row">-->
+              <!--<div class="col-xs-12 col-md-12 col-lg-12">-->
+                <!--<label for="notes">行程备注</label>-->
+                <!--<textarea class="form-control" rows="3" id="notes" name="notes"-->
+                          <!--ng-model="vm.data.journey_comment"-->
+                          <!--maxlength="300"></textarea>-->
+              <!--</div>-->
+            <!--</div>-->
+          <!--</div>-->
+
+          <!--<div class="form-group">-->
+            <!--<div class="row">-->
+              <!--<div class="col-xs-12 col-md-12 col-lg-12">-->
+                <!--<label for="requirement">特殊需求</label>-->
+                <!--<textarea class="form-control" rows="3" id="requirement" name="requirement"-->
+                          <!--ng-model="vm.data.special_need"-->
+                          <!--maxlength="300"></textarea>-->
+              <!--</div>-->
+            <!--</div>-->
+          <!--</div>-->
+
+          <!--<button type="button" class="btn btn-default btn-primary btn-submit"-->
+                  <!--ng-click="vm.submitForm(progressForm)" id="submit" name="submit">提交</button>-->
+        <!--</form>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+  <!--<div class="col-lg-4">-->
+    <!--<div class="row">-->
+      <!--<hna-progress-date-board start-date="{{vm.currentProject.info.schedule.start_date}}" end-date="{{vm.currentProject.info.schedule.end_date}}"></hna-progress-date-board>-->
+    <!--</div>-->
+    <!--<div class="row">-->
+      <!--<div class="panel">-->
+        <!--<div class="panel-heading">-->
+          <!--<h3 class="panel-title">项目日历</h3>-->
+        <!--</div>-->
+        <!--<div class="panel-body">-->
+          <!--<hna-calendar start-date="vm.currentProject.info.schedule.start_date" end-date="vm.currentProject.info.schedule.end_date" clickable="false">-->
+          <!--</hna-calendar>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</div>-->

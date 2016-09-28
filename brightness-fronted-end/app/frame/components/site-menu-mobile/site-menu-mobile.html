@@ -1,0 +1,26 @@
+<footer class="footer-menu-bar">
+
+  <ul class="bottomNav">
+    <li id="home-page" class="home-menu">
+        <a href="#/home">
+          <img ng-src="{{homeIcon}}">
+        </a>
+    </li>
+    <li id="viewInfoMenu" class="mobile-menu" uib-popover-html="viewInfoMenu" popover-is-open="viewInfoPopoverIsOpen" ng-click="toggleViewInfo()" ng-class="{'active': viewInfoPopoverIsOpen}">
+      <img ng-src="{{infoCollectIcon}}" ng-if="!viewInfoPopoverIsOpen">
+      <img ng-src="{{infoCollectActiveIcon}}" ng-if="viewInfoPopoverIsOpen">
+      <a>信息查看</a>
+    </li>
+    <li id="collectInfoMenu" class="mobile-menu" uib-popover-html="collectInfoMenu" popover-is-open="collectInfoPopoverIsOpen"  ng-click="toggleCollectInfo()" ng-class="{'active': collectInfoPopoverIsOpen}">
+      <img ng-src="{{infoViewIcon}}" ng-if="!collectInfoPopoverIsOpen">
+      <img ng-src="{{infoViewActiveIcon}}" ng-if="collectInfoPopoverIsOpen">
+      <a>信息录入</a>
+    </li>
+    <li id="accountMenu" class="mobile-menu" uib-popover-html="accountMenu" popover-is-open="accountPopoverIsOpen" ng-click="toggleAccountInfo()" ng-class="{'active': accountPopoverIsOpen}">
+      <img ng-src="{{accountIcon}}" ng-if="!accountPopoverIsOpen">
+      <img ng-src="{{accountActiveIcon}}" ng-if="accountPopoverIsOpen">
+      <a>账户管理</a>
+    </li>
+  </ul>
+
+</footer>

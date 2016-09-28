@@ -1,0 +1,68 @@
+<div class="page-login">
+  <div class="head">
+    <img class="head-img" ng-src="{{headBg}}"/>
+    <img class="logo-img" ng-src="{{logo}}"/>
+    <p>海航光明行数字化平台</p>
+  </div>
+
+  <div class="login-main">
+    <div class="content">
+
+      <form class="login-from" ng-submit="vm.login(loginForm)" name="loginForm" novalidate>
+        <img class="mobile-logo" ng-src="{{mobileLogo}}">
+        <p class="text slogan" id="slogan" name="slogan">让越来越多的人重新看到世界, 我们只是借了神的光</p>
+        <p class="text slogan-mobile" id="slogan-mobile" name="slogan-mobile">让越来越多的人重新看到世界<br>我们只是借了神的光</p>
+
+        <ul class="list-group">
+          <li class="list-group-item">
+            <input class="" type="text" id="username" name="username" placeholder="用户名"
+                   required maxlength="16"
+                   ng-model="vm.data.username" ng-pattern="vm.inputPattern"
+                   ng-class="{'invalid-input':loginForm.username.$dirty && loginForm.username.$invalid}"/>
+          </li>
+          <li class="list-group-item">
+            <input class="" type="password" id="password" name="password" placeholder="密码"
+                   required maxlength="16"
+                   ng-model="vm.data.password" ng-pattern="vm.inputPattern"
+                   ng-class="{'invalid-input':loginForm.password.$dirty && loginForm.password.$invalid}"/>
+          </li>
+          <li class="list-group-item validation-code clearfix">
+            <input class="validation-code-input" type="text" id="validationCode" name="validationCode" placeholder="验证码"
+                   required maxlength="4"
+                   ng-model="vm.data.validationCode">
+            <img ng-src="{{vm.validationCodeUrl}}" alt="validation-code" ng-click="vm.refreshValidationCode()">
+          </li>
+        </ul>
+
+        <div class="error-message" id="errorMessage" name="errorMessage">
+          <span ng-show="vm.invalidForm(loginForm)">{{vm.errorMsg}}</span>
+        </div>
+
+        <button class="btn btn-submit btn-login" type="submit" id="login" name="login">登录</button>
+        <div class="login-additional-btn-container">
+          <div class="row">
+            <!--
+            <div class="col-lg-6 col-md-6 col-xs-12">
+              <a class="btn btn-lg btn-default pull-left" ui-sref="static.2016" id="current" name="current">
+                2016 光明行
+                <i class="icon glyphicon glyphicon-menu-right" ui-sref="static.2016"></i>
+              </a>
+            </div>
+            -->
+            <div class="col-lg-12 col-md-12 col-xs-12">
+              <a class="btn btn-lg btn-default" ui-sref="static.otherYears" id="past" name="past">
+                历年光明行
+                <i class="icon glyphicon glyphicon-menu-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </form>
+
+    </div>
+    <div class="bg">
+      <div full-image="vm.background"></div>
+    </div>
+  </div>
+
+</div>

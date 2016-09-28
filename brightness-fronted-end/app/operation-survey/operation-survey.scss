@@ -1,0 +1,49 @@
+@import "../../styles/variables";
+
+.operation-survey {
+
+  .clear-bottom {
+    margin-bottom: 0px;
+  }
+
+  .flex-col {
+    .row:last-child {
+      height: 30px;
+    }
+  }
+  .info-panel .panel-body .mobile-survey-container {
+    margin-bottom: 30px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  .survey-result {
+    margin-top: -5px;
+    color: $brand-primary-blue;
+    font-size: 18px;
+  }
+  .survey-result-confirmed-number {
+    margin-left: 25px;
+    margin-top: 25px;
+    font-size: 20px;
+    color: $brand-primary-orange;
+  }
+}
+
+@media screen and (max-width: $screen-xs-min) {
+  .operation-survey {
+    .panel-body {
+      .mobile-survey-container {
+        margin-bottom: 0;
+        .mobile-survey-item {
+          padding-right: 10px;
+          margin-bottom: 10px;
+        }
+      }
+
+      .survey-result-confirmed-number {
+        margin: -5px auto auto -5px;
+      }
+    }
+  }
+}

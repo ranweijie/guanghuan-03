@@ -1,0 +1,26 @@
+<div class="hospital-list">
+  <div class="panel info-panel patient-info">
+    <div class="panel-heading">
+      <h3 class="panel-title"><i class="icon ui-icon-hospital"></i>医院列表</h3>
+      <button ng-if="vm.showUpdateButton" class="btn btn-lg btn-submit pull-right" id="add" ui-sref="base.hospital.form">添加医院</button>
+    </div>
+    <div class="panel-body">
+      <div class="hospital-list-table">
+        <table class="table panel-table">
+          <thead></thead>
+          <tbody>
+          <tr ng-repeat="hospital in vm.hospitalList track by $index" id="hospital{{$index}}">
+            <td class="td-content" id="name{{$index}}">{{hospital.name}}</td>
+            <td class="td-button">
+              <button class="btn btn-small btn-view" id="view{{$index}}" ui-sref="base.hospital.view({id: hospital._id})">查看</button>
+            </td>
+            <td ng-if="vm.showUpdateButton" class="td-button">
+              <button class="btn btn-small btn-delete" id="delete{{$index}}" ng-click="vm.deleteHospital(hospital)">删除</button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

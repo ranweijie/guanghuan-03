@@ -1,0 +1,14 @@
+{
+  "name": "brightness-mock-server",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "NODE_PATH=. node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "^4.13.1",
+    "require-dir": "^0.3.0",
+    "restify": "^4.1.0"
+  }
+}

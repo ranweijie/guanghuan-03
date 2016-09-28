@@ -1,0 +1,70 @@
+@import "../../styles/variables";
+.progress-tracking-view-page {
+  .progress {
+    display: block;
+  }
+
+  .progress-date-board .progress-date {
+    min-height: 140px;
+  }
+
+
+  .summary-info {
+    border-right: 1px solid #ccc;
+    text-align: center;
+    padding-left: 10px;
+
+    .count {
+      font-size: 50px;
+    }
+
+    .desc {
+      text-align: left;
+      padding-left: 10px;
+      margin-top: 8px;
+    }
+
+    &.clear {
+      border-right: none;
+    }
+  }
+}
+
+
+@media screen and (min-width: $screen-hna-md-min) and (max-width: $screen-hna-md-max){
+  .summary-info {
+    .count {
+      font-size: 30px;
+    }
+  }
+}
+
+@media screen and (max-width: $screen-xs-min) {
+
+  .summary-info {
+    background-color: #f1f1f1;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    text-align: center;
+    border-radius: 10px;
+    padding-left: 20px;
+    .count{
+      text-align: left;
+      width: 60%;
+    }
+    &.clear {
+      border-right: 1px solid #ccc;;
+    }
+  }
+  .progress-tracking-view-page {
+    .panel-body .mobile-launch-ceremony-container {
+      margin-bottom: 0;
+      .mobile-launch-ceremony-detail {
+        margin-bottom: 15px;
+      }
+      .mobile-launch-ceremony-detail-last {
+        margin: 0;
+      }
+    }
+  }
+}

@@ -1,0 +1,23 @@
+.launch-ceremony-form {
+  .btn-xs {
+    height: 2rem;
+    width: 4rem;
+    font-size: 1.1rem;
+  }
+  table {
+    .form-control {
+      padding: 0.2rem 0.6rem;
+      height: 2.6rem;
+    }
+    tr>td{
+      width: 12%;
+      &.input-field {
+        width: 35%;
+      }
+      &.button-field {
+        padding: 0.8rem;
+        width: 5%;
+      }
+    }
+  }
+}

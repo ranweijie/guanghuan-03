@@ -1,0 +1,72 @@
+@import "../../styles/variables";
+
+.launch-ceremony {
+
+  .panel {
+    &.ceremony-date-box {
+      min-height: 255px;
+    }
+  }
+  .panel-body,.head-people-content {
+    > .row {
+      margin-bottom: 30px;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+  //.head-people-content {
+  //  > .row {
+  //    margin-bottom: 30px;
+  //    &:last-child {
+  //      margin-bottom: 0;
+  //    }
+  //  }
+  //}
+  .leaders-name-detail {
+    margin-left: 25px;
+  }
+  .panel-bg-image {
+    position: absolute;
+    right: 8px;
+    bottom: 8px;
+    width: 60px;
+  }
+
+  .icon {
+    margin-right: 10px;
+    color: $brand-primary-blue;
+    font-size: 16px;
+  }
+
+  .agenda {
+    .table td {
+      white-space: nowrap;
+    }
+  }
+
+  @media screen and (max-width: $screen-lg-min) {
+    .panel-bg-image {
+      bottom: 0;
+    }
+  }
+  @media screen and (max-width: $screen-xs-min) {
+    .panel-bg-image {
+      bottom: 0;
+      right: 0;
+    }
+    .info-panel div.head-people-content {
+      padding-right: 10px;
+      .row {
+        margin-bottom: 10px;
+        &:last-child {
+          margin-bottom: 20px;
+        }
+        //div:last-child {
+        //  padding-right: 10px;
+        //}
+      }
+    }
+  }
+
+}

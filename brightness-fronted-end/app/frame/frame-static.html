@@ -1,0 +1,27 @@
+<div class="frame-static">
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+			</div>
+			<div class="user-info" ng-if="!isLogin()">
+        <a ng-click="backToLogin()" id="backToLogin" name="backToLogin">
+          <i class="icon glyphicon glyphicon-hand-left" ></i>
+          <span>返回登录</span>
+        </a>
+      </div>
+      <div class="user-info" ng-if="isLogin()">
+        <span class="user-name">欢迎你，{{vm.loginUserName}}</span>
+        <a ng-click="logout()" id="logout" name="logout">
+          <i class="icon glyphicon glyphicon-off"></i>
+          <span>退出账户</span>
+        </a>
+      </div>
+		</div>
+	</nav>
+	<div class="toggled wrapper">
+		<div class="page-content-wrapper">
+			<div ui-view>
+      </div>
+		</div>
+	</div>
+</div>

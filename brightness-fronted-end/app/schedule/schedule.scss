@@ -1,0 +1,39 @@
+@import "../../styles/variables";
+
+.schedule {
+  .text-info{
+    color: #ffffff;
+  }
+  .btn-primary {
+    width: 150px;
+  }
+  .content {
+    margin-bottom: 20px;
+    text-align: left;
+    background-color: $content-bg-color;
+    padding: 20px;
+    border: solid 1px #ccc;
+  }
+
+  .selected-date {
+    text-align: center;
+    font-size: 16px;
+  }
+
+  textarea.form-control[disabled]{
+    background-color: $textarea-bg-color;
+  }
+
+  .list-content{
+    margin-bottom: 20px;
+    text-align: left;
+    padding: 20px;
+    min-height: 120px;
+
+    pre{
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+  }
+}
+

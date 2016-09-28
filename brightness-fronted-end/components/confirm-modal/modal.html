@@ -1,0 +1,11 @@
+<div class="modal-header">
+  <strong class="modal-title"></strong>
+</div>
+<div class="modal-body">
+  <img class="tips-icon" ng-src="{{alertImg}}">
+  <p class="modal-message">{{message}}</p>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-small modal-btn btn-cancel" type="button" ng-click="cancel()" ng-show="isShowCancelBtn">取消</button>
+  <button class="btn btn-small modal-btn btn-submit" type="button" ng-click="ok()">确定</button>
+</div>

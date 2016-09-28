@@ -1,0 +1,33 @@
+.geo-map {
+  margin-bottom: 20px;
+
+  .lnglat {
+    font-size: 12px;
+  }
+
+  .geo-map-result {
+    border: 1px solid #cccccc;
+    border-bottom: 0;
+    padding: 5px;
+  }
+
+  .geo-map-content {
+    min-height: 230px;
+    border: 1px solid #cccccc;
+  }
+
+  .geo-map-action {
+    border: 1px solid #cccccc;
+    border-top: 0;
+    padding: 5px;
+    text-align: right;
+
+    input {
+      font-size: 12px;
+      width: 250px;
+    }
+
+  }
+}
+
+

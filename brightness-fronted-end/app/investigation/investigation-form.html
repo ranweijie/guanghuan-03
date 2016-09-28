@@ -1,0 +1,97 @@
+<div class="required-tips">
+  <h6>*为必填项</h6>
+</div>
+<div class="investigation-form">
+  <div class="panel info-panel">
+    <div class="panel-body">
+      <form name="investigationForm" class="panel-form" novalidate>
+        <div class="row">
+          <div class="col-xs-12 col-md-6 col-lg-6">
+            <div class="form-group"
+                 ng-class="{'has-error':vm.requiredField(investigationForm.address, investigationForm)}">
+              <label for="address" class="required-label">考察地点</label>
+              <input class="form-control" type="text" ng-model="vm.investigation.address" name="address" id="address"
+                     maxlength="100" required>
+              <p class="help-block"
+                 ng-show="vm.requiredField(investigationForm.address, investigationForm)">
+                <i class="glyphicon glyphicon-remove-circle"></i>请填写考察地点
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 col-md-6 col-lg-6">
+            <div class="form-group">
+              <label class="required-label">地图位置</label>
+              <hna-geo-map class="location-map" lng="vm.investigation.location.longitude"
+                           lat="vm.investigation.location.latitude"
+                           address="vm.investigation.location.address"
+                           draggable="true"></hna-geo-map>
+            </div>
+          </div>
+          <div class="col-xs-12 col-md-6 col-lg-6">
+            <div class="form-group">
+              <label for="introduction">简介</label>
+            <textarea name="introduction" id="introduction" class="form-control"
+                      ng-model="vm.investigation.introduction" rows="15" maxlength="300"></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group">
+            <label for="culture">当地文化特征</label>
+            <textarea name="culture" id="culture" class="form-control"
+                      ng-model="vm.investigation.culture" rows="3" maxlength="300"></textarea>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group">
+            <label for="population">人口分布</label>
+            <textarea name="population" id="population" class="form-control"
+                      ng-model="vm.investigation.population" rows="3" maxlength="300"></textarea>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group">
+            <label for="religion">宗教信仰</label>
+            <textarea name="religion" id="religion" class="form-control"
+                      ng-model="vm.investigation.religion" rows="3" maxlength="300"></textarea>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group">
+            <label for="governmentOpinion">政府意见</label>
+            <textarea name="governmentOpinion" id="governmentOpinion" class="form-control"
+                      ng-model="vm.investigation.government_opinion" rows="3" maxlength="300"></textarea>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group">
+            <label for="otherProjects">当地其他公益项目</label>
+            <textarea name="otherProjects" id="otherProjects" class="form-control"
+                      ng-model="vm.investigation.other_projects" rows="3" maxlength="300"></textarea>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group">
+            <label for="otherNotices">其他事项</label>
+            <textarea name="otherNotices" id="otherNotices" class="form-control"
+                      ng-model="vm.investigation.other_notices" rows="3" maxlength="300"></textarea>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-6 col-md-3 col-lg-2">
+            <button class="btn btn-lg btn-cancel" id="back" name="back"
+                    ui-sref="base.investigation.view">返回
+            </button>
+          </div>
+          <div class="col-xs-6 col-md-3 col-lg-2">
+            <button type="submit" class="btn btn-lg btn-submit" id="submit" name="submit"
+                    ng-click="vm.submitForm(investigationForm)">提交
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

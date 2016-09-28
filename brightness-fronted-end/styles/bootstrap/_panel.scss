@@ -1,0 +1,40 @@
+@import "../../styles/variables";
+
+//
+// Panels
+// --------------------------------------------------
+
+// Base class
+.panel {
+  border: none;
+  padding: 22px 40px;
+  margin: 8px;
+}
+
+// Optional heading
+.panel-heading {
+  border-bottom: 1px solid #f1f1f1;
+  margin-bottom: 16px;
+}
+
+
+@media screen and (min-width: $screen-xs-min) and (max-width: $screen-hna-md-max) {
+  .panel {
+    padding: 22px 5px;
+  }
+
+  .panel-heading {
+    margin-right: 20px;
+    margin-left: 20px;
+  }
+}
+
+@media screen and (max-width: $screen-xs-min) {
+
+  .panel {
+    border-radius: 0;
+    border-bottom: 2px solid #f1f1f1;
+    padding: 22px 20px;
+    margin: 0;
+  }
+}

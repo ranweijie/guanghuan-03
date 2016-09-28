@@ -1,0 +1,38 @@
+@import "../../styles/variables";
+
+.modal-title {
+ font-size: 20px;
+}
+
+.modal-header {
+  border-bottom: none;
+}
+
+.modal-body {
+  padding-left: 55px;
+  padding-right: 55px;
+}
+
+.modal-footer {
+  margin-bottom: 20px;
+  border-top: none;
+  text-align: center;
+}
+
+.modal-message {
+  line-height: 2.5;
+  white-space: pre-line;
+  display: inline-block
+}
+
+.modal-btn {
+  width: 8rem;
+  font-size: 1.2rem;
+}
+
+.tips-icon {
+  margin-top: 10px;
+  vertical-align: top;
+  margin-right: 5px;
+  width: 14px;
+}

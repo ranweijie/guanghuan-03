@@ -1,0 +1,18 @@
+.userManagement{
+  .user-list{
+    table td{
+      white-space: nowrap;
+    }
+    table td:last-child{
+      text-align: right;
+      width: 20%;
+    }
+    table td:first-child{
+      width: 5%;
+    }
+  }
+  .group-btn{
+    text-align: right;
+    padding-right: 8px;
+  }
+}

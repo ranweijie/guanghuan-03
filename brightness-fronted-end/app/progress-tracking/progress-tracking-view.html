@@ -1,0 +1,159 @@
+<div class="progress-tracking-view-page">
+  <div class="row progress-tracking-view">
+    <div class="col-lg-4 progress-date-web">
+      <div class="row">
+        <hna-progress-date-board start-date="{{vm.currentProject.info.schedule.start_date}}"
+                                 end-date="{{vm.currentProject.info.schedule.end_date}}">
+        </hna-progress-date-board>
+      </div>
+      <div class="row">
+        <div class="panel info-panel project-calendar-panel">
+          <div class="panel-body">
+            <hna-calendar start-date="vm.currentProject.info.schedule.start_date"
+                          end-date="vm.currentProject.info.schedule.end_date"
+                          clickable="false">
+            </hna-calendar>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-8">
+      <div class="row">
+        <div class="panel info-panel">
+          <div class="panel-heading">
+            <h3 class="panel-title">今日行程</h3>
+          </div>
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4 info-lable">
+                <i class="icon ui-icon-hotel" aria-hidden="true"></i>入住酒店
+              </div>
+              <div class="col-lg-9 col-md-9 col-sm-9 col-xs-8 info-text" id="hotel" name="hotel">
+                {{vm.progressInfo.hotel_name}}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4 info-lable">
+                <i class="icon ui-icon-address" aria-hidden="true"></i>酒店地址
+              </div>
+              <div class="col-lg-9 col-md-9 col-sm-9 col-xs-8 info-text" id="address" name="address">
+                {{vm.progressInfo.hotel_address}}
+              </div>
+            </div>
+            <hna-geo-map lng="vm.progressInfo.hotel_location.longitude" lat="vm.progressInfo.hotel_location.latitude"
+                         adjust-height=".progress-date-web"
+                         draggable="false"></hna-geo-map>
+            <div class="row">
+              <div class="col-lg-3 col-md-3 col-xs-4 info-lable">
+                <i class="icon ui-icon-notes" aria-hidden="true"></i>行程备注
+              </div>
+              <div class="col-lg-9 col-md-9 col-xs-8 info-text" id="remarks" name="remarks">
+                {{vm.progressInfo.journey_comment}}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-3 col-md-3 col-xs-4 info-lable">
+                <i class="icon ui-icon-requirement" aria-hidden="true"></i>特殊需求
+              </div>
+              <div class="col-lg-9 col-md-9 col-xs-8 info-text" id="requirement" name="requirement">
+                {{vm.progressInfo.special_need}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel info-panel">
+        <div class="panel-heading">
+          <h3 class="panel-title">患者就诊情况更新</h3>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-lg-4 col-md-4 col-xs-12 summary-info clearfix" id="totalChecked" name="totalChecked">
+              <p class="count primary-red pull-left">{{vm.operationSurveyInfo.first_check.checked_numbers}}</p>
+              <p class="desc pull-left">共筛查<br>人</p>
+            </div>
+            <div class="col-lg-4 col-md-4 col-xs-12 summary-info" id="confirmedNum" name="confirmedNum">
+              <p class="count primary-blue pull-left">{{vm.operationSurveyInfo.confirmed_numbers}}</p>
+              <p class="desc pull-left">确认就诊<br>人</p>
+            </div>
+            <div class="col-lg-4 col-md-4 col-xs-12 summary-info clear" id="currentNum" name="currentNum">
+              <p class="count primary-orange pull-left">{{vm.progressInfo.cured_till_today}}</p>
+              <p class="desc pull-left">截止今天累计就诊<br>人</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel info-panel">
+        <div class="panel-heading">
+          <h3 class="panel-title">启动仪式</h3>
+        </div>
+        <div class="panel-body">
+          <div class="row mobile-launch-ceremony-container">
+            <div class="col-xs-12 col-md-12 col-lg-12">
+              <div class="row">
+                <div class="col-xs-12 col-md-6 col-lg-6 mobile-launch-ceremony-detail">
+                  <div class="row">
+                    <div class="col-xs-4 col-md-3 col-lg-3 info-lable">
+                      <i class="icon ui-icon-date"></i>时间
+                    </div>
+                    <div class="col-xs-8 col-md-8 col-lg-8 info-text" id="launchCeremonyDate" name="launchCeremonyDate">
+                      {{vm.launchInfo.date | date: 'yyyy年MM月dd日' | replaceEmptyText}}
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-12 col-md-6 col-lg-6 mobile-launch-ceremony-detail">
+                  <div class="row">
+                    <div class="col-xs-4 col-md-3 col-lg-3 info-lable">
+                      <i class="icon ui-icon-address"></i>地点
+                    </div>
+                    <div class="col-xs-8 col-md-8 col-lg-8 info-text" id="launchCeremonyAddress" name="launchCeremonyAddress">
+                      {{vm.launchInfo.address ? vm.launchInfo.address : '暂无'}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row mobile-launch-ceremony-container">
+            <div class="col-xs-12 col-md-12 col-lg-12">
+              <div class="row">
+                <div class="col-xs-12 col-md-6 col-lg-6 mobile-launch-ceremony-i">
+                  <div class="row">
+                    <div class="col-xs-4 col-md-3 col-lg-3 info-lable">
+                      <i class="icon ui-icon-people"></i>参与的领导
+                    </div>
+                    <div class="col-xs-8 col-md-8 col-lg-8 info-text" id="launchCeremonyLeader" name="launchCeremonyLeader">
+                      {{vm.launchInfo.hna_leader}}
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-12 col-md-6 col-lg-6 mobile-launch-ceremony-detail-last">
+                  <div class="row">
+                    <div class="col-xs-4 col-md-3 col-lg-3 info-lable">
+                      <i class="icon ui-icon-people"></i>揭纱布人数
+                    </div>
+                    <div class="col-xs-8 col-md-8 col-lg-8 info-text" id="launchCeremonyPatientNum" name="launchCeremonyPatientNum">
+                      {{vm.launchInfo.number_of_patient}}人
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

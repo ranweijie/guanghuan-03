@@ -1,0 +1,49 @@
+@import "../../styles/variables";
+
+.progress-date-board {
+  .progress-date {
+    text-align: center;
+    margin-top: 50px;
+    min-height: 183px;
+
+    span {
+      font-weight: 700;
+      color: #df3231;
+      font-size: 80px;
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+  }
+  #progressDate {
+    .row {
+      margin-bottom: 0;
+    }
+  }
+  .progress-date-mobile {
+    display: none;
+  }
+}
+
+@media screen and (max-width: $screen-xs-min) {
+
+  .progress-date-board {
+    .progress-date-mobile {
+      padding: 30px 15px 15px 20px;
+      background-color: #fff;
+      width: 100%;
+      text-align: center;
+      display: block;
+
+      button {
+        padding: 10px 50px;
+        border-radius: 20px;
+        color: #fff;
+        background-color: #d9534f;
+        border-color: #d43f3a;
+      }
+    }
+    .progress-date-web {
+      display: none;
+    }
+  }
+}

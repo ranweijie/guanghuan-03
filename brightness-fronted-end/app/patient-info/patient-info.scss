@@ -1,0 +1,45 @@
+@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap/variables";
+
+.patient-info {
+
+  .uib-day button, .uib-month button, .uib-year button {
+    border-radius: 0;
+    border-color: #fff;
+  }
+
+  .uib-datepicker .uib-title, .uib-left, .uib-right {
+    border-color: #fff;
+  }
+
+  .btn-default.active {
+    background-color: #df3231;
+    .text-info {
+      color: #fff;
+    }
+  }
+
+  .btn-default:hover {
+    background-color: #fdb674;
+  }
+
+  .datepicker-mobile {
+    display: none;
+  }
+
+  .color-grey{
+    color: #A4A4A4;
+  }
+
+}
+
+@media screen and (max-width: $screen-xs-min) {
+  .patient-info {
+    .datepicker-mobile {
+      display: block;
+    }
+
+    .datepicker {
+      display: none;
+    }
+  }
+}

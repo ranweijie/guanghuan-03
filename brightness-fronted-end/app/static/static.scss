@@ -1,0 +1,50 @@
+@import "../../styles/variables";
+
+
+.page-static{
+	margin:0 auto;
+	max-width:1080px;
+	background: #fff;
+	border-radius: 10px;
+	padding: 2% 4%;
+
+	.title{
+		//border-bottom: 1px solid $btn-default-border;
+		line-height:1.4872;
+    font-size:$font-xxxl;
+	}
+
+  .panel-body{
+    margin: 20px 0;
+    p{
+      margin: 20px 0;
+    }
+  }
+
+  .panel-heading{
+    position: relative;
+    padding: 0;
+    height: auto;
+    width: 100%;
+
+    img{
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: auto;
+    }
+
+  }
+
+  #current-title {
+    position: absolute;
+    margin-left: 20px;
+    bottom: 5px;
+    color: #ffffff;
+  }
+
+  .thumbnail{
+    background-color: #ffffff;
+  }
+}
+

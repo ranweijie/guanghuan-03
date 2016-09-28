@@ -1,0 +1,59 @@
+<div class="row">
+  <div class="col-lg-12">
+    <div class="panel info-panel schedule">
+      <div class="panel-heading">
+        <div class="panel-title">
+          <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" ng-show="{{!vm.readOnly}}">
+              请点击日历选择新增或编辑日程安排
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" ng-show="{{vm.readOnly}}">
+              请点击日历查看日程安排
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <hna-calendar start-date="vm.currentProject.info.schedule.start_date"
+                          end-date="vm.currentProject.info.schedule.end_date"
+                          selected-date="vm.selectedDate"
+                          clickable="true"
+                          theme="'calendar-lg'">
+            </hna-calendar>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="panel info-panel">
+  <img ng-src="{{vm.peopleBg}}" class="panel-bg-large bottom-right-corner">
+  <div class="panel-heading">
+    <h3 class="panel-title">项目组成人员</h3>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-lg-10 col-md-10 col-xs-12">
+        <table class="table panel-table">
+          <thead>
+          <tr>
+            <th>职责</th>
+            <th>姓名</th>
+            <th>联系方式</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr ng-repeat="participant in vm.participantList track by $index">
+            <td id="title-{{$index}}">{{participant.category | roleCategoryMapping}}组长</td>
+            <td id="name-{{$index}}">{{participant.name}}</td>
+            <td id="phone-{{$index}}">{{participant.mobile}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

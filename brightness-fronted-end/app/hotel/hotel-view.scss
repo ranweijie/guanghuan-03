@@ -1,0 +1,64 @@
+@import "../../styles/variables";
+
+.hotel-view {
+  .clear-bottom {
+    margin-bottom: 0;
+  }
+  .flex-col {
+    .row:last-child {
+      height: 30px;
+    }
+  }
+  .geo-map {
+    margin: 0;
+  }
+  strong {
+    margin-right: 5px;
+    font-weight: normal;
+    font-size: 30px;
+  }
+  .content-strong {
+    min-height: 42px;
+  }
+  .title-strong {
+    padding-top: 10px;
+  }
+  .num-room {
+    color: $brand-primary-blue;
+  }
+  .num-parking {
+    color: $brand-primary-blue;
+  }
+  .num-premier {
+    color: $brand-primary-orange
+  }
+  .conclusion {
+    p {
+      white-space: pre-line;
+    }
+  }
+}
+
+.photos {
+
+  li {
+    position: relative;
+    display: inline-block;
+    width: 160px;
+    height: 90px;
+    margin: 5px;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+    button{
+      position: absolute;
+      z-index: 1;
+      right: 0;
+      bottom: 0;
+      display: block;
+
+    }
+  }
+
+}

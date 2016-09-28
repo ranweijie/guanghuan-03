@@ -1,0 +1,169 @@
+<div class="hotel-view">
+
+  <div class="row">
+    <div class="col-xs-12 col-md-4 col-lg-4 hotel-detail-info">
+      <div class="row">
+        <div class="col-xs-12 col-md-12 col-lg-12">
+          <div class="panel info-panel">
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-xs-6 col-md-6 col-lg-6 info-label"><i class="icon ui-icon-hotel"></i>酒店名称</div>
+                <div class="col-xs-6 col-md-6 col-lg-6" id="hotelName">{{vm.hotelInfo.name | replaceEmptyText}}</div>
+              </div>
+              <div class="row">
+                <div class="col-xs-6 col-md-6 col-lg-6 info-label"><i class="icon ui-icon-address"></i>酒店地址</div>
+                <div class="col-xs-6 col-md-6 col-lg-6" id="address">{{vm.hotelInfo.address | replaceEmptyText}}</div>
+              </div>
+              <div class="row">
+                <div class="col-xs-6 col-md-6 col-lg-6 info-label"><i class="icon ui-icon-people"></i>联系人</div>
+                <div class="col-xs-6 col-md-6 col-lg-6" id="contactName">{{vm.hotelInfo.contact_name | replaceEmptyText}}</div>
+              </div>
+              <div class="row">
+                <div class="col-xs-6 col-md-6 col-lg-6 info-label"><i class="icon ui-icon-phone"></i>联系方式</div>
+                <div class="col-xs-6 col-md-6 col-lg-6" id="contactInfo">{{vm.hotelInfo.contact_tel | replaceEmptyText}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-md-12 col-lg-12">
+          <div class="panel info-panel">
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-xs-6 col-md-6 col-lg-6 content-strong title-strong info-label"><i
+                        class="icon ui-icon-people"></i>可接待人数</div>
+                <div class="col-xs-6 col-md-6 col-lg-6 content-strong" id="roomNum">
+                  <span ng-if="vm.isNumber(vm.hotelInfo.room_capacity)">
+                    <strong class="num-room">{{vm.hotelInfo.room_capacity}}</strong>
+                  </span>
+                  <div class="title-strong" ng-if="!vm.isNumber(vm.hotelInfo.room_capacity)">暂无</div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-6 col-md-6 col-lg-6 content-strong title-strong info-label"><i
+                        class="icon ui-icon-people"></i> 停车场车位</div>
+                <div class="col-xs-6 col-md-6 col-lg-6 content-strong" id="parkingNum">
+                  <span ng-if="vm.isNumber(vm.hotelInfo.parking_capacity)">
+                    <strong class="num-parking">{{vm.hotelInfo.parking_capacity}}</strong>
+                  </span>
+                  <div class="title-strong" ng-if="!vm.isNumber(vm.hotelInfo.parking_capacity)">暂无</div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-6 col-md-6 col-lg-6 info-label"><i class="icon ui-icon-room"></i>是否有高级套房</div>
+                <div class="col-xs-6 col-md-6 col-lg-6" id="hasPremierRoom">{{vm.hotelInfo.has_premier_room | replaceEmptyText}}</div>
+              </div>
+              <div class="row">
+                <div class="col-xs-6 col-md-6 col-lg-6 content-strong title-strong info-label"><i
+                        class="icon ui-icon-room"></i>套房数量</div>
+                <div class="col-xs-6 col-md-6 col-lg-6 content-strong" id="premierRoomNum">
+                  <span ng-if="vm.isNumber(vm.hotelInfo.premier_room_capacity)">
+                    <strong class="num-premier">{{vm.hotelInfo.premier_room_capacity}}</strong>间
+                  </span>
+                  <div class="title-strong" ng-if="!vm.isNumber(vm.hotelInfo.premier_room_capacity)">暂无</div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-6 col-md-6 col-lg-6 info-label"><i class="icon ui-icon-meals"></i>餐饮</div>
+                <div class="col-xs-6 col-md-6 col-lg-6 info-text" id="meals">{{vm.hotelInfo.meals | arrayReplaceToString |
+                  replaceEmptyText}}</div>
+              </div>
+              <div class="row">
+                <div class="col-xs-6 col-md-6 col-lg-6 info-label"><i class="icon ui-icon-heating"></i>采暖</div>
+                <div class="col-xs-6 col-md-6 col-lg-6 info-text" id="airConditionType">
+                  {{vm.hotelInfo.air_condition_type | arrayReplaceToString | replaceEmptyText}}
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-6 col-md-6 col-lg-6 info-label"><i class="icon ui-icon-network"></i>网络设置</div>
+                <div class="col-xs-6 col-md-6 col-lg-6 info-text" id="networkCondition">
+                  {{vm.hotelInfo.network_condition | replaceEmptyText}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-12 col-md-8 col-lg-8">
+      <div class="panel info-panel">
+        <div class="panel-heading">
+          <h3 class="panel-title"><i class="icon ui-icon-map"></i>酒店地理位置</h3>
+        </div>
+        <div class="panel-body">
+          <hna-geo-map lng="vm.hotelInfo.hotel_location.longitude" lat="vm.hotelInfo.hotel_location.latitude"
+                       adjust-height=".hotel-detail-info"
+                       draggable="false"></hna-geo-map>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12 col-md-12 col-lg-12">
+      <div class="panel info-panel">
+        <div class="panel-heading">
+          <h3 class="panel-title"><i class="icon ui-icon-photos"></i>酒店照片</h3>
+        </div>
+        <div class="panel-body" id="picture">
+          <div ng-if="!vm.hotelInfo.photos.length">暂无</div>
+          <ul ng-if="vm.hotelInfo.photos.length" class="photos">
+            <li ng-repeat="photo in vm.hotelInfo.photos">
+              <a target="_blank" href="{{photo.file.src}}">
+                <img class="img-responsive img-rounded" ng-src="{{photo.file.src}}">
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12 col-md-12 col-lg-12">
+      <div class="panel info-panel">
+        <div class="panel-heading">
+          <h3 class="panel-title"><i class="icon ui-icon-introduction"></i>酒店考察结论</h3>
+        </div>
+        <div class="panel-body clear-bottom flex-col">
+          <div class="row">
+            <div class="col-lg-1 col-md-1 col-xs-1">
+              <img ng-src="{{vm.upQuote}}" class="panel-bg-xsmall">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-xs-10 col-xs-offset-1 conclusion" id="conclusion">
+              <p>{{vm.hotelInfo.result | replaceEmptyText | textWrapper}}</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-1 col-lg-offset-11 col-md-1 col-md-offset-11 col-xs-1 col-xs-offset-11">
+              <img ng-src="{{vm.downQuote}}" class="panel-bg-xsmall">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12 col-md-12 col-lg-12">
+      <div class="panel info-panel">
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-xs-4 col-md-4 col-lg-4">是否满足需求</div>
+            <div class="col-xs-8 col-md-8 col-lg-8" id="qualified">{{vm.hotelInfo.is_match_required | replaceEmptyText}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div ng-if="vm.showUpdateButton" class="row">
+    <div class="col-xs-12 col-md-12 col-lg-12">
+      <button class="btn btn-lg btn-submit btn-bottom" id="update" ui-sref="base.hotel.form({id: vm.hotelInfo._id})">编辑</button>
+    </div>
+  </div>
+
+</div>

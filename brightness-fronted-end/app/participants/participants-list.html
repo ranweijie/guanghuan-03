@@ -1,0 +1,106 @@
+<div class="participants">
+
+  <div class="row">
+    <div class="panel info-panel">
+      <div class="panel-heading">
+        <h3 class="panel-title"><i class="icon ui-icon-people"></i>参与人员</h3>
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-lg-3 col-md-3 col-xs-12 participant-member-box">
+            <div class="participant-member">
+              <strong>{{vm.participantsList.length}}</strong>
+              <span>共参与人</span>
+            </div>
+          </div>
+          <div class="col-lg-9 col-md-9 col-xs-12">
+            <hna-bar-chart data="vm.chartData"></hna-bar-chart>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="panel info-panel">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-xs-6">
+            <h3 class="panel-title"><i class="icon  ui-icon-people"></i>人员列表</h3>
+          </div>
+          <div class="col-lg-6 col-md-6 col-xs-6">
+            <button class="btn btn-lg btn-submit pull-right" ng-if="vm.isEditable" ui-sref="base.participants.form">新增人员</button>
+          </div>
+        </div>
+      </div>
+      <div class="panel-body">
+
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-xs-6">
+            <div class="btn-group" uib-dropdown>
+              <button id="categoryButton" name="singleButton" type="button" class="btn btn-lg btn-submit" uib-dropdown-toggle>
+                <span>{{vm.filter.name || '全部人员'}} </span>
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button"
+                  id="selectedCategory">
+                <li id="selectedCategory-{{$index}}" role="menuitem" ng-repeat="item in vm.categories track by $index">
+                  <a ng-click="vm.filterListBy(item)">{{item.name}}</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-xs-6">
+            <uib-pagination total-items="(vm.participantsList | filter:{category: vm.filter.id}).length"
+                            ng-model="vm.currentPage"
+                            items-per-page="vm.pageSize"
+                            class="pagination-sm pull-right"
+                            boundary-link-numbers="true"
+                            rotate="false"
+                            previous-text="上一页"
+                            next-text="下一页"
+                            ng-change="vm.onChange()">
+            </uib-pagination>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="table-responsive">
+              <table class="table panel-table" id="participantList">
+                <thead>
+                <tr>
+                  <th>职责</th>
+                  <th>姓名</th>
+                  <th>联系方式</th>
+                  <th></th>
+                </tr>
+                </thead>
+                <tbody>
+
+                 <tr
+                   ng-repeat="participant in filteredParticipantsList = vm.participantsList | filter:{category: vm.filter.id} | startFrom:(vm.currentPage-1)*vm.pageSize | limitTo:vm.pageSize track by $index">
+                  <td>{{participant.category | roleCategoryMapping}}
+                    <button class="btn btn-leader btn-view" ng-if="participant.is_team_leader"
+                            ng-click="vm.toggleTeamLeader(participant)" ng-disabled="!vm.isEditable">组长
+                    </button>
+                  </td>
+                  <td>{{participant.name}}</td>
+                  <td>{{participant.mobile}}</td>
+                  <td style="text-align: right;" ng-if="vm.isEditable">
+                    <button class="btn btn-small btn-view" ng-if="!participant.is_team_leader"
+                            ng-click="vm.toggleTeamLeader(participant)" id="setLeadBtn">设为组长
+                    </button>
+                    <button class="btn btn-small btn-submit" ng-click="vm.updateParticipant(participant)" id="updateBtn_{{$index}}">编辑</button>
+                    <button class="btn btn-small btn-delete" ng-click="vm.deleteParticipant(participant)" id="deleteBtn_{{$index}}">删除</button>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

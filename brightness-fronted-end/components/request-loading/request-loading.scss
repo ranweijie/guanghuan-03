@@ -1,0 +1,30 @@
+.md-loading{
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 9999;
+	.loading-content{
+		background-color:#000;
+		text-align: center;
+		height: 80px;
+		width: 120px;
+		position: absolute;
+		left: 50%;
+		top: 45%;
+		margin-left: -60px;
+		margin-top: -40px;
+		border-radius: 10px;
+		opacity:0.3;
+		.spinner{
+			background:url(./ajax-loader.gif) center center no-repeat;
+			width: 66px;
+			height: 66px;
+			background-size:40px;
+			display: block;
+			margin:7px auto;
+		}
+	}
+
+}

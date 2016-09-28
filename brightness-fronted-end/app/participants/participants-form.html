@@ -1,0 +1,110 @@
+<div class="required-tips">
+  <h6>*为必填项</h6>
+</div>
+<div class="participants-form">
+  <div class="panel info-panel">
+    <div class="panel-heading">
+      <h3 class="panel-title">参与人员个人信息</h3>
+    </div>
+    <div class="panel-body">
+      <form name="participantsForm" class="panel-form" novalidate>
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-xs-12">
+            <div class="form-group"
+                 ng-class="{'has-error':vm.requiredField(participantsForm.name, participantsForm)}">
+              <label for="name" class="required-label">姓名</label>
+              <input type="text" class="form-control" name="name" id="name"
+                     ng-model="vm.participant.name" maxlength="10" required/>
+              <p class="help-block"
+                 ng-show="vm.requiredField(participantsForm.name, participantsForm)">
+                <i class="glyphicon glyphicon-remove-circle"></i>请填写用户名
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-xs-12">
+            <div class="form-group"
+                 ng-class="{'has-error':vm.requiredField(participantsForm.mobile, participantsForm)}">
+              <label for="name" class="required-label">联系方式</label>
+              <input type="text" class="form-control" name="mobile" id="mobile"
+                     ng-model="vm.participant.mobile" maxlength="30" required/>
+              <p class="help-block"
+                 ng-show="vm.requiredField(participantsForm.mobile, participantsForm)">
+                <i class="glyphicon glyphicon-remove-circle"></i>请填写联系方式
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-xs-12">
+            <div class="form-group">
+              <label for="id_card">身份证号码</label>
+              <input type="text" class="form-control" name="id_card" id="id_card"
+                     ng-model="vm.participant.id_card" maxlength="30"/>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-xs-12">
+            <div class="form-group"
+                 ng-class="{'has-error':vm.requiredField(participantsForm.category, participantsForm)}">
+              <label class="required-label">职责</label>
+              <select class="form-control" name="category" id="category"
+                      ng-model="vm.participant.category" required>
+                <option ng-repeat="category in vm.categories track by $index" id="category_{{$index}}" value="{{category.id}}">
+                  {{category.name}}
+                </option>
+              </select>
+              <p class="help-block"
+                 ng-show="vm.requiredField(participantsForm.category, participantsForm)">
+                <i class="glyphicon glyphicon-remove-circle"></i>请选择职责
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-xs-12">
+            <div class="form-group">
+              <label>性别</label>
+              <select class="form-control" name="gender" id="gender" ng-model="vm.participant.gender">
+                <option value=""></option>
+                <option value="male" id="sex_male">男</option>
+                <option value="female" id="sex_female">女</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-xs-12">
+            <div class="form-group">
+              <label for="blood_type">血型</label>
+              <input type="text" class="form-control" name="blood_type" id="blood_type"
+                     ng-model="vm.participant.blood_type" maxlength="10"/>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-xs-12">
+            <div class="form-group">
+              <label for="name">紧急联系人</label>
+              <input type="text" class="form-control" name="emergency_contact" id="emergency_contact"
+                     ng-model="vm.participant.emergency_contact" maxlength="10"/>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-xs-12">
+            <div class="form-group">
+              <label for="name">紧急联系人联系方式</label>
+              <input type="text" class="form-control" name="emergency_mobile" id="emergency_mobile"
+                     ng-model="vm.participant.emergency_mobile" maxlength="30"/>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-6 col-md-3 col-lg-2">
+            <button class="btn btn-lg btn-cancel" id="cancel" ui-sref="base.participants.list">返回</button>
+          </div>
+          <div class="col-xs-6 col-md-3 col-lg-2">
+            <button class="btn btn-lg btn-submit" id="submit" type="submit"
+                    ng-click="vm.submitForm(participantsForm)">提交
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

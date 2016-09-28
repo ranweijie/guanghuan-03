@@ -1,0 +1,26 @@
+@import "variables";
+
+.panel-table {
+  margin-bottom: 0;
+  thead>tr>th {
+    padding: 0.5rem 0.8rem;
+    height: 3rem;
+    border: none;
+    vertical-align: middle;
+  }
+  tbody>tr {
+    &:nth-of-type(odd) {
+      background-color: $table-odd-color;
+    }
+    &:nth-of-type(even) {
+      background-color: #fff;
+    }
+    border-top: none;
+    border-bottom: 1px solid #ccc;
+    td {
+      padding: 0.5rem 0.8rem;
+      height: 3rem;
+      border: none;
+    }
+  }
+}

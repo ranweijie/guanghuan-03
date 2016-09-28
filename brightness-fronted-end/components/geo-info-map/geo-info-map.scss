@@ -1,0 +1,63 @@
+@import "../../styles/variables";
+
+.geo-info-map {
+  margin: 20px;
+
+
+  .geo-info-map-content {
+    min-height: 500px;
+    border: 1px solid #cccccc;
+  }
+
+  .info {
+    padding: 15px;
+    border: solid 1px silver;
+    box-shadow: 0 5px 15px rgba(0,0,0,.5);
+    border-radius: 10px;
+    background: #fff;
+  }
+
+  .icon {
+    color: $brand-primary-blue;
+    margin-right: 10px;
+    font-size: 16px;
+  }
+
+  div.info-top {
+    position: relative;
+    background: #fff;
+    border-bottom: 1px solid #CCC;
+    border-radius: 5px 5px 0 0;
+  }
+  div.info-top div {
+    display: inline-block;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 31px;
+  }
+  div.info-top img {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    transition-duration: 0.25s;
+  }
+  div.info-top img:hover {
+    box-shadow: 0px 0px 5px #000;
+  }
+
+  div.info-middle {
+    font-size: 12px;
+    line-height: 20px;
+    padding-right: 20px;
+    padding-top: 15px;
+  }
+  div.info-middle a{
+    color: #ffa552;
+  }
+  span {
+    margin-left: 5px;
+    font-size: 11px;
+  }
+}
+
+

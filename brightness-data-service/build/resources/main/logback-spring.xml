@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+    <logger name="com.hna.brightness.dataservice" level="INFO"/>
+
+    <!--<include resource="org/springframework/boot/logging/logback/file-appender.xml" />-->
+    <!--<root level="INFO">-->
+        <!--<appender-ref ref="FILE" />-->
+        <!--<appender-ref ref="STDOUT"/>-->
+    <!--</root>-->
+</configuration>

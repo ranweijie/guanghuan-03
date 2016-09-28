@@ -1,0 +1,225 @@
+<div class="basic-info">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel info-panel">
+        <div class="panel-heading">
+          <h3 class="panel-title">项目日程</h3>
+        </div>
+        <div class="panel-body">
+          <div class="row mobile-schedule-container">
+            <div class="col-xs-12 col-md-12 col-lg-12">
+              <div class="row">
+                <div class="col-xs-12 col-md-6 col-lg-6 mobile-schedule-item">
+                  <div class="row">
+                    <div class="col-xs-6 col-md-4 col-lg-4 info-label">
+                      <i class="icon ui-icon-date"></i>开始日期
+                    </div>
+                    <div id="startDate" name="startDate" class="col-xs-6 col-md-8 col-lg-8 info-text">
+                      {{vm.project.schedule.start_date | date: 'yyyy年MM月dd日' | replaceEmptyText}}
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-12 col-md-6 col-lg-6 mobile-schedule-item">
+                  <div class="row">
+                    <div class="col-xs-6 col-md-4 col-lg-4 info-label">
+                      <i class="icon ui-icon-date"></i>结束日期
+                    </div>
+                    <div id="endDate" name="endDate" class="col-xs-6 col-md-8 col-lg-8 info-text">
+                      {{vm.project.schedule.end_date | date: 'yyyy年MM月dd日' | replaceEmptyText}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row mobile-schedule-container">
+            <div class="col-xs-12 col-md-12 col-lg-12">
+              <div class="row">
+                <div class="col-xs-12 col-md-6 col-lg-6 mobile-schedule-item">
+                  <div class="row">
+                    <div class="col-xs-6 col-md-4 col-lg-4 info-label">
+                      <i class="icon ui-icon-date"></i>启动仪式日期
+                    </div>
+                    <div class="col-xs-6 col-md-6 col-lg-6 info-text" id="launchDate" name="launchDate">
+                      {{vm.project.schedule.launch_ceremony_date | date: 'yyyy年MM月dd日' | replaceEmptyText}}
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-12 col-md-6 col-lg-6 mobile-schedule-item">
+                  <div class="row">
+                    <div class="col-xs-6 col-md-4 col-lg-4 info-label">
+                      <i class="icon ui-icon-date"></i>揭纱布仪式日期
+                    </div>
+                    <div class="col-xs-6 col-md-8 col-lg-8 info-text" id="ceremonyDate" name="ceremonyDate">
+                      {{vm.project.schedule.gauze_tear_down_ceremony_date | date: 'yyyy年MM月dd日' | replaceEmptyText}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="panel info-panel">
+        <img ng-src="{{vm.corperationBg}}" class="panel-bg-small bottom-right-corner">
+        <div class="panel-heading">
+          <h3 class="panel-title">实施地区</h3>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-lg-5 col-md-5 col-xs-6 info-label">
+              <i class="icon ui-icon-address"></i>所在地
+            </div>
+            <div class="col-lg-7 col-md-7 col-xs-6 info-text" id="location" name="location">
+              {{vm.project.location | replaceEmptyText}}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-5 col-md-5 col-xs-6 info-label">
+              <i class="icon ui-icon-people"></i>当地政府联系人
+            </div>
+            <div class="col-lg-7 col-md-7 col-xs-6 info-text" id="contact" name="contact">
+              {{vm.project.local_government.contact_name | replaceEmptyText}}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-5 col-md-5 col-xs-6 info-label">
+              <i class="icon ui-icon-phone"></i>联系方式
+            </div>
+            <div class="col-lg-7 col-md-7 col-xs-6 info-text" id="phone" name="phone">
+              {{vm.project.local_government.contact_information | replaceEmptyText}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-6">
+      <div class="panel info-panel">
+        <img ng-src="{{vm.corperationBg}}" class="panel-bg-small bottom-right-corner">
+        <div class="panel-heading">
+          <h3 class="panel-title">当地合作医院</h3>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-lg-5 col-md-5 col-xs-6 info-label">
+              <i class="icon ui-icon-hospital"></i>医院名称
+            </div>
+            <div class="col-lg-7 col-md-7 col-xs-6 info-text" id="hospital" name="hospital">
+              {{vm.project.local_hospital.name | replaceEmptyText}}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-5 col-md-5 col-xs-6 info-label">
+              <i class="icon ui-icon-people"></i>联系人
+            </div>
+            <div class="col-lg-7 col-md-7 col-xs-6 info-text" id="hospitalContact" name="hospitalContact">
+              {{vm.project.local_hospital.contact_name | replaceEmptyText}}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-5 col-md-5 col-xs-6 info-label">
+              <i class="icon ui-icon-phone"></i>联系方式
+            </div>
+            <div class="col-lg-7 col-md-7 col-xs-6 info-text" id="hospitalPhone" name="hospitalPhone">
+              {{vm.project.local_hospital.contact_information | replaceEmptyText}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel info-panel other-info-container">
+        <div class="panel-heading">
+          <h3 class="panel-title">其他重要信息</h3>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-lg-1 col-md-1 col-xs-2">
+              <img ng-src="{{vm.upQuote}}" class="panel-bg-xsmall">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-5 col-lg-offset-1 col-md-5 col-md-offset-1 col-xs-10 col-xs-offset-2">
+              <div class="row">
+                <div class="col-lg-12 col-md-12 col-xs-12 info-label">
+                  <i class="icon ui-icon-requirement"></i>重要人物及其日程安排
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-12 col-md-12 col-xs-12 info-text other-info-text" id="arrangement" name="arrangement">
+                  {{vm.project.other_important_info.vip_and_their_schedule | replaceEmptyText}}
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-5 col-lg-offset-0 col-md-5 col-md-offset-0 col-xs-10 col-xs-offset-2">
+              <div class="row">
+                <div class="col-lg-12 col-md-12 col-xs-12 info-label">
+                  <i class="icon ui-icon-notes"></i>其他
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-12 col-md-12 col-xs-12 info-text other-info-text" id="notes" name="notes">
+                  {{vm.project.other_important_info.others | replaceEmptyText}}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-1 col-lg-offset-11 col-md-1 col-md-offset-11 col-xs-2 col-xs-offset-10">
+              <img ng-src="{{vm.downQuote}}" class="panel-bg-xsmall bottom-right-corner">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel info-panel">
+        <img ng-src="{{vm.peopleBg}}" class="panel-bg-large bottom-right-corner">
+        <div class="panel-heading">
+          <h3 class="panel-title">项目组成人员</h3>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-lg-10 col-md-10 col-xs-12">
+              <table class="table panel-table project-members-table">
+                <thead>
+                <tr>
+                  <th>职责</th>
+                  <th>姓名</th>
+                  <th>联系方式</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="member in vm.project.project_members track by $index">
+                  <td id="title-{{$index}}">{{member.title | replaceEmptyText}}</td>
+                  <td id="name-{{$index}}">{{member.name | replaceEmptyText}}</td>
+                  <td id="phone-{{$index}}">{{member.phone | replaceEmptyText}}</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row" ng-if="vm.showUpdateButton">
+    <div class="col-lg-12">
+      <button class="btn btn-lg btn-submit btn-bottom" ui-sref="base.projectInfo.form" id="update">编辑</button>
+    </div>
+  </div>
+
+</div>

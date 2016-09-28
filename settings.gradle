@@ -1,0 +1,10 @@
+rootProject.name = 'HNA-Brightness'
+
+include 'brightness-data-service'
+
+include 'brightness-core'
+
+include 'brightness-frontend'
+
+include 'brightness-frontend-build'
+

@@ -1,0 +1,114 @@
+@import "../../styles/variables";
+
+.hna-calendar {
+  position: relative;
+  padding: 0;
+  text-align: center;
+  padding-top: 20px;
+
+  div {
+    display: inline-block;
+  }
+
+  .mask {
+    background-color: transparent;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  .well {
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    display: inline-block;
+    .text-info{
+      color: $text-color;
+    }
+    .btn {
+      color: $text-color;
+      border-radius: 0;
+    }
+    .btn.active,.btn:active{
+      box-shadow: none;
+    }
+    .btn-default {
+      border-color: #fff;
+    }
+    .btn-default.active{
+      background-color: #fff;
+    }
+    .btn-info{
+      background-color: $brand-primary-red !important;
+    }
+    .btn-info.active,.btn-info:active{
+      background-color: $brand-primary-red;
+    }
+    .selected button {
+      background-color: $brand-primary-orange;
+    }
+    .selected button span {
+      color: #fff;
+    }
+  }
+
+  .calendar-norm {
+    .btn-sm {
+      font-size: $font-md;
+    }
+  }
+
+  .calendar-lg {
+    text-align: center;
+    button {
+      background-color: #f0f0f0;
+    }
+    .btn-sm {
+      padding: 5px 30px 25px 10px;
+      font-size: $font-md;
+    }
+    thead {
+      .btn-default {
+        background-color: #fff;
+      }
+      color: $text-color;
+      .btn-sm{
+        padding: 25px 15px;
+        color: $text-color;
+      }
+      .btn-default:hover {
+        background-color: #fff;
+        color: $text-color;
+      }
+    }
+    .well .full button {
+      background-color: #fdb674;
+    }
+  }
+}
+
+@media screen and (min-width: $screen-hna-md-min) and (max-width: $screen-hna-md-max) {
+  .hna-calendar {
+    .calendar-norm {
+      .btn-sm {
+        font-size: 12px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $screen-xs-min) {
+  .hna-calendar {
+    .calendar-lg {
+      .btn-sm {
+        padding: 5px 10px;
+        font-size: 14px;
+      }
+      thead .btn-sm {
+        padding: 15px 10px;
+      }
+    }
+  }
+}

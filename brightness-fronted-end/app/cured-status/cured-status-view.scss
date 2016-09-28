@@ -1,0 +1,21 @@
+@import "../../styles/variables";
+
+.cured-status-view {
+  .cured-number {
+    input {
+      width: 60%;
+
+      color: $brand-primary-orange;
+      font-size: 50px;
+      text-align: center;
+    }
+    span {
+      margin-left: 20px;
+    }
+  }
+  table {
+    thead>tr>th {
+      padding: 0 8px;
+    }
+  }
+}

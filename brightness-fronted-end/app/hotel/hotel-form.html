@@ -1,0 +1,234 @@
+<div class="required-tips">
+  <h6>*为必填项</h6>
+</div>
+<div class="hospital-form">
+  <div class="panel info-panel">
+    <div class="panel-body">
+      <form name="hotelForm" class="panel-form" novalidate>
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-xs-12">
+            <div class="form-group"
+                 ng-class="{'has-error':vm.requiredField(hotelForm.name, hotelForm)}">
+              <label class="required-label" for="name">酒店名称</label>
+              <input class="form-control" type="text" name="name" id="name"
+                     ng-model="vm.investigation_hotel.name" maxlength="30" required>
+              <p class="help-block"
+                 ng-show="vm.requiredField(hotelForm.name, hotelForm)">
+                <i class="glyphicon glyphicon-remove-circle"></i>请填写酒店名称
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-xs-12">
+            <div class="form-group">
+              <label for="address">酒店地址</label>
+              <input class="form-control" type="text" name="address" id="address"
+                     ng-model="vm.investigation_hotel.address" maxlength="100">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-xs-12">
+            <div class="form-group">
+              <label for="contactName">联系人</label>
+              <input class="form-control" type="text" name="contactName" id="contactName"
+                     ng-model="vm.investigation_hotel.contact_name" maxlength="10">
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-xs-12">
+            <div class="form-group">
+              <label for="contactTelephone">联系方式</label>
+              <input class="form-control" type="text" name="contactTelephone" id="contactTelephone"
+                     ng-model="vm.investigation_hotel.contact_tel" maxlength="30">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-xs-12">
+            <div class="form-group">
+              <label class="required-label">酒店地图位置</label>
+              <hna-geo-map lng="vm.investigation_hotel.hotel_location.longitude"
+                           lat="vm.investigation_hotel.hotel_location.latitude"
+                           address="vm.investigation_hotel.hotel_location.address"
+                           draggable="true"></hna-geo-map>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-xs-12">
+            <div class="form-group">
+              <div><label>是否有高级套房</label></div>
+              <div class="radio-inline">
+                <label><input type="radio" ng-model="vm.investigation_hotel.has_premier_room" value="有">有</label>
+              </div>
+              <div class="radio-inline">
+                <label><input type="radio" ng-model="vm.investigation_hotel.has_premier_room" value="无">无</label>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-xs-12">
+            <div class="form-group"
+                 ng-class="{'has-error':vm.invalidNumber(hotelForm.premierRoomCapacity, hotelForm)}">
+              <label for="premierRoomCapacity">套房数量</label>
+              <input class="form-control" type="number" name="premierRoomCapacity" id="premierRoomCapacity"
+                     ng-model="vm.investigation_hotel.premier_room_capacity" min="0" max="99999">
+              <p class="help-block"
+                 ng-show="vm.invalidNumber(hotelForm.premierRoomCapacity, hotelForm)">
+                <i class="glyphicon glyphicon-remove-circle"></i>数字范围为0-99999
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-xs-12">
+            <div class="form-group"
+                 ng-class="{'has-error':vm.invalidNumber(hotelForm.roomCapacity, hotelForm)}">
+              <label for="roomCapacity">可接待人数</label>
+              <input class="form-control" type="number" name="roomCapacity" id="roomCapacity"
+                     ng-model="vm.investigation_hotel.room_capacity" min="0" max="99999">
+              <p class="help-block"
+                 ng-show="vm.invalidNumber(hotelForm.roomCapacity, hotelForm)">
+                <i class="glyphicon glyphicon-remove-circle"></i>数字范围为0-99999
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-xs-12">
+            <div class="form-group"
+                 ng-class="{'has-error':vm.invalidNumber(hotelForm.parkingCapacity, hotelForm)}">
+              <label for="parkingCapacity">停车场车位</label>
+              <input class="form-control" type="number" name="parkingCapacity" id="parkingCapacity"
+                     ng-model="vm.investigation_hotel.parking_capacity" min="0" max="99999">
+              <p class="help-block"
+                 ng-show="vm.invalidNumber(hotelForm.parkingCapacity, hotelForm)">
+                <i class="glyphicon glyphicon-remove-circle"></i>数字范围为0-99999
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-xs-12">
+            <div class="form-group">
+              <div><label>餐饮(多选)</label></div>
+              <div class="checkbox-inline" ng-repeat="meal in vm.meals">
+                <label>
+                  <input type="checkbox" value={{meal}}
+                         ng-checked="vm.investigation_hotel.meals.indexOf(meal) > -1"
+                         ng-click="vm.toggleSelection(meal, vm.investigation_hotel.meals)">{{'含'+ meal}}</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-xs-12">
+            <div class="form-group">
+              <div><label>采暖(多选)</label></div>
+              <div class="row">
+                <div class="col-lg-5">
+                  <div class="checkbox-inline" ng-repeat="set in vm.heatingSets">
+                    <label>
+                      <input type="checkbox" value={{set}}
+                             ng-checked="vm.investigation_hotel.air_condition_type.indexOf(set) > -1"
+                             ng-click="vm.toggleSelection(set, vm.investigation_hotel.air_condition_type)">{{set}}</label>
+                  </div>
+                </div>
+                <div class="col-lg-7">
+                  <div class="checkbox checkbox-other clearfix">
+                    <label>
+                      <input type="checkbox" ng-checked="!!vm.airConditionOther"> 其它</label>
+                    <input type="text" class="form-control" ng-model="vm.airConditionOther" name="airConditionOther"
+                           id="airConditionOther" maxlength="100">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-xs-12">
+            <div class="form-group">
+              <div><label>网络设置</label></div>
+              <div class="radio-inline" ng-repeat="condition in vm.networkConditions">
+                <label>
+                  <input type="radio" value={{condition}} ng-model="vm.investigation_hotel.network_condition">{{condition}}</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group">
+            <label>酒店照片</label>
+            <div ng-if="vm.temporaryPhotos.length" class="row">
+              <ul class="photos">
+                <li ng-repeat="photo in vm.temporaryPhotos">
+                  <a target="_blank" href="{{photo.file.src}}">
+                    <img class="img-responsive img-rounded" ng-src="{{photo.file.src}}">
+                  </a>
+                  <button type="button" class="btn btn-danger btn-xs" ng-click="vm.delete(photo)">
+                    <span class="glyphicon glyphicon-trash"></span> 删除
+                  </button>
+                  <div class="progress" ng-show="photo.progress >= 0 && photo.progress != 100">
+                    <div class="progress-bar" role="progressbar" ng-style="{'width': photo.progress + '%'}"></div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="row">
+              <div class="file-upload">
+                <div class="upload-box drop-zone"
+                     ngf-drop="vm.uploadFiles($file, $invalidFiles)"
+                     ngf-drag-over-class="'drag-over'"
+                     ngf-pattern="'image/*'"
+                     ngf-max-size="10MB">
+                  <button class="btn btn-xxl btn-view" id="upload" type="button"
+                          ngf-select="vm.uploadFiles($file, $invalidFiles)"
+                          ngf-pattern="'image/*'"
+                          ngf-max-size="10MB">文件上传
+                  </button>
+                  <p class="upload-tips">请选择或拖拽上传文件(PNG, JPG, JPEG, GIF), 最多6个, 限制每个文件大小10M以内</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group">
+            <label>酒店考察结论</label>
+            <textarea class="form-control" name="result" id="result" ng-model="vm.investigation_hotel.result"
+                      rows="3" maxlength="300">
+
+            </textarea>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group">
+            <div>
+              <label>是否满足需求</label>
+            </div>
+            <div>
+              <div class="radio-inline">
+                <label>
+                  <input type="radio" ng-model="vm.investigation_hotel.is_match_required" value="满足">满足</label>
+              </div>
+              <div class="radio-inline">
+                <label>
+                  <input type="radio" ng-model="vm.investigation_hotel.is_match_required" value="不满足">不满足</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-6 col-md-3 col-lg-2" ng-if="vm.showButton">
+            <button class="btn btn-lg btn-cancel" id="back" name="back"
+                    ui-sref="base.hotel.view({id: vm.investigation_hotel._id})">返回
+            </button>
+          </div>
+          <div class="col-xs-6 col-md-3 col-lg-2">
+            <button type="submit" class="btn btn-lg btn-submit" id="submit" name="submit"
+                    ng-click="vm.submitForm(hotelForm)">提交
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,4 @@
+FROM nginx:1.10-alpine
+MAINTAINER zzzhao
+ADD dist /data/app
+ADD config/brightness.conf /etc/nginx/conf.d/default.conf

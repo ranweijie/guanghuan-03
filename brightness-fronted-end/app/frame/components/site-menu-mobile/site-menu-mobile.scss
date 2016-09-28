@@ -1,0 +1,85 @@
+@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap/variables";
+@import "../../../../styles/variables";
+
+@media screen and (max-width: $screen-xs-min) {
+
+  .footer-menu-bar {
+    z-index: 999;
+    display: block;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    background-color: #f5f5f5;
+    border-top: 2px solid #C2CAD3;
+
+    img {
+      width: 30px;
+    }
+
+    .home-menu {
+      width: 19%; background-color: #cccccc
+    }
+
+    .bottomNav>li {
+      height: 50px;
+      text-align: center;
+      float: left;
+      padding-top: 10px;
+    }
+
+    .bottomNav>li>i {
+      vertical-align: middle;
+      font-size: 40px;
+      color: #C2CAD3;
+    }
+
+    .bottomNav>li>a {
+      color: #7b7885;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .bottomNav .active {
+      border-bottom: 3px solid #FFCD6A;
+      a {
+        color: #FFCD6A;
+      }
+    }
+
+
+    .popover {
+      background-color: #f5f5f5;
+      border-radius: 3px;
+      border: 2px solid #c2cad3;
+    }
+
+    .popover.top {
+      margin-top: -10px;
+    }
+
+    .popover.top>.arrow:after {
+      border-top-color: #f5f5f5;
+    }
+
+    .popover-content {
+      padding: 15px 15px;
+    }
+
+    .popover-content a {
+      text-decoration: none;
+      display: block;
+      padding: 15px 0;
+      color: #7b7885;
+      border-bottom: solid 1px #cbcbcb;
+    }
+
+    .popover-content a:last-child {
+      border-bottom: none;
+    }
+  }
+
+  .mobile-menu{
+    width: 27%;
+  }
+}

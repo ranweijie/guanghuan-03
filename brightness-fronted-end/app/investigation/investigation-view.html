@@ -1,0 +1,166 @@
+<div class="investigation-view">
+  <div class="row">
+    <div class="col-xs-12 col-md-8 col-lg-8">
+      <div class="panel info-panel">
+        <div class="panel-heading">
+          <h3 class="panel-title"><i class="icon ui-icon-map"></i>地图</h3>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4">
+              <i class="icon ui-icon-address" aria-hidden="true"></i>项目所在地
+            </div>
+            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-8" id="address">
+              {{vm.investigationData.address | replaceEmptyText}}
+            </div>
+          </div>
+          <hna-geo-map lng="vm.investigationData.location.longitude" lat="vm.investigationData.location.latitude"
+                       adjust-height=".introduction-info"
+                       draggable="false"></hna-geo-map>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-12 col-md-4 col-lg-4 introduction-info">
+      <div class="panel info-panel">
+        <div class="panel-heading">
+          <h3 class="panel-title"><i class="icon ui-icon-notes"></i>简介</h3>
+        </div>
+        <div class="panel-body panel-body-introduction">
+          <div class="row">
+            <div class="col-lg-1 col-md-1 col-xs-1">
+              <img ng-src="{{vm.upQuote}}" class="panel-bg-xsmall">
+            </div>
+          </div>
+          <p id="introduction">{{vm.investigationData.introduction | replaceEmptyText | textWrapper}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12 col-md-12 col-lg-12">
+      <div class="panel info-panel">
+        <div class="panel-heading">
+          <h3 class="panel-title"><i class="icon ui-icon-introduction"></i>当地文化特征</h3>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-xs-11 col-md-11 col-lg-11" id="culture">
+              <p>{{vm.investigationData.culture | replaceEmptyText | textWrapper}}</p>
+            </div>
+            <div class="col-lg-1 col-lg-offset-11 col-md-1 col-md-offset-11 col-xs-1 col-xs-offset-11">
+              <img ng-src="{{vm.downQuote}}" class="panel-bg-xsmall bottom-right-corner">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12 col-md-12 col-lg-12">
+      <div class="panel info-panel">
+        <div class="panel-heading">
+          <h3 class="panel-title"><i class="icon ui-icon-people"></i>人口分布</h3>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-xs-11 col-md-11 col-lg-11" id="population">
+              <p>{{vm.investigationData.population | replaceEmptyText | textWrapper}}</p>
+            </div>
+            <div class="col-lg-1 col-lg-offset-11 col-md-1 col-md-offset-11 col-xs-1 col-xs-offset-11">
+              <img ng-src="{{vm.downQuote}}" class="panel-bg-xsmall bottom-right-corner">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12 col-md-12 col-lg-12">
+      <div class="panel info-panel">
+        <div class="panel-heading">
+          <h3 class="panel-title"><i class="icon ui-icon-introduction"></i>宗教信仰</h3>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-xs-11 col-md-11 col-lg-11" id="religion">
+              <p>{{vm.investigationData.religion | replaceEmptyText | textWrapper}}</p>
+            </div>
+            <div class="col-lg-1 col-lg-offset-11 col-md-1 col-md-offset-11 col-xs-1 col-xs-offset-11">
+              <img ng-src="{{vm.downQuote}}" class="panel-bg-xsmall bottom-right-corner">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12 col-md-12 col-lg-12">
+      <div class="panel info-panel">
+        <div class="panel-heading">
+          <h3 class="panel-title"><i class="icon ui-icon-notes"></i>政府意见</h3>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-xs-11 col-md-11 col-lg-11" id="governmentOpinion">
+              <p>{{vm.investigationData.government_opinion | replaceEmptyText | textWrapper}}</p>
+            </div>
+            <div class="col-lg-1 col-lg-offset-11 col-md-1 col-md-offset-11 col-xs-1 col-xs-offset-11">
+              <img ng-src="{{vm.downQuote}}" class="panel-bg-xsmall bottom-right-corner">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12 col-md-12 col-lg-12">
+      <div class="panel info-panel">
+        <div class="panel-heading">
+          <h3 class="panel-title"><i class="icon ui-icon-notes"></i>其他公益项目</h3>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-xs-11 col-md-11 col-lg-11" id="otherProjects">
+              <p>{{vm.investigationData.other_projects | replaceEmptyText | textWrapper}}</p>
+            </div>
+            <div class="col-lg-1 col-lg-offset-11 col-md-1 col-md-offset-11 col-xs-1 col-xs-offset-11">
+              <img ng-src="{{vm.downQuote}}" class="panel-bg-xsmall bottom-right-corner">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12 col-md-12 col-lg-12">
+      <div class="panel info-panel">
+        <div class="panel-heading">
+          <h3 class="panel-title"><i class="icon ui-icon-notes"></i>其他注意事项</h3>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-xs-11 col-md-11 col-lg-11" id="otherNotices">
+              <p>{{vm.investigationData.other_notices | replaceEmptyText | textWrapper}}</p>
+            </div>
+            <div class="col-lg-1 col-lg-offset-11 col-md-1 col-md-offset-11 col-xs-1 col-xs-offset-11">
+              <img ng-src="{{vm.downQuote}}" class="panel-bg-xsmall bottom-right-corner">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div ng-if="vm.showUpdateButton" class="row">
+    <div class="col-xs-12 col-md-12 col-lg-12">
+      <button class="btn btn-lg btn-submit btn-bottom" ui-sref="base.investigation.form" id="update">编辑</button>
+    </div>
+  </div>
+
+</div>

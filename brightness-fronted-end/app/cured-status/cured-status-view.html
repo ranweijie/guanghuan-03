@@ -1,0 +1,89 @@
+<div class="cured-status-view">
+  <div class="row">
+    <div class="col-xs-12 col-md-12 col-lg-12">
+      <div class="panel info-panel">
+        <div class="panel-heading">
+          <h3 class="panel-title">共医治患者</h3>
+        </div>
+        <div class="panel-body">
+          <form name="curedNumbersForm" novalidate>
+            <div class="row">
+              <div class="col-xs-8 col-md-4 col-lg-4 col-xs-offset-1 col-md-offset-1 col-lg-offset-1">
+                <div class="form-group cured-number"
+                     ng-class="{'has-error':vm.invalidNumber(curedNumbersForm.curedNumbers, curedNumbersForm)}">
+                  <input type="number" class="primary-orange" id="curedNumbers" name="curedNumbers"
+                         ng-model="vm.curedNumbers" min="0" max="99999"/>
+                  <span>人</span>
+                  <p class="help-block"
+                     ng-show="vm.invalidNumber(curedNumbersForm.curedNumbers, curedNumbersForm)">
+                    <i class="glyphicon glyphicon-remove-circle"></i>数字范围为0-99999
+                  </p>
+                </div>
+              </div>
+              <div ng-show="vm.showUpdateButton" class="row">
+                <div class="col-xs-6 col-md-6 col-lg-6 col-xs-offset-4 col-md-offset-4 col-lg-offset-4">
+                  <button type="submit" class="btn btn-lg btn-submit" id="submit" name="submit"
+                          ng-click="vm.submit(curedNumbersForm)">保存
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12 col-md-12 col-lg-12">
+      <div class="panel info-panel">
+        <div class="panel-heading">
+          <h3 class="panel-title">患者就诊记录</h3>
+        </div>
+        <div class="panel-body">
+          <table ng-if="vm.patientList.length" class="table panel-table">
+            <thead>
+            <tr>
+              <th>姓名</th>
+              <th>性别</th>
+              <th>年龄</th>
+              <th>晶体度数</th>
+              <th colspan="2">
+                <uib-pagination total-items="vm.patientList.length"
+                                ng-model="vm.currentPage"
+                                items-per-page="vm.pageSize"
+                                class="pagination-sm pull-right"
+                                boundary-link-numbers="true"
+                                rotate="false"
+                                previous-text="上一页"
+                                next-text="下一页"
+                                ng-change="vm.onChange()">
+                </uib-pagination>
+              </th>
+            </tr>
+            </thead>
+            <tbody>
+              <tr id="patient{{$index}}" ng-repeat="patient in vm.currentPatientList track by $index">
+                <td id="name{{$index}}">{{patient.name}}</td>
+                <td id="gender{{$index}}">{{patient.gender}}</td>
+                <td id="age{{$index}}">{{patient.age}}</td>
+                <td id="crystalDegree{{$index}}">{{patient.crystal_degree}}</td>
+                <td>
+                  <button class="btn btn-small btn-submit" id="update" name="update"
+                          ui-sref="base.patientInfo({id: patient._id})">编辑
+                  </button>
+                </td>
+                <td ng-show="vm.showUpdateButton">
+                  <button class="btn btn-small btn-delete" id="delete" name="delete"
+                          ng-click="vm.delete(patient._id)">删除
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <span ng-if="!vm.patientList.length">暂无</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

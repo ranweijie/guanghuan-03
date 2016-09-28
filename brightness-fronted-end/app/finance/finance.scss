@@ -1,0 +1,88 @@
+@import "../../styles/variables";
+
+.finance-info {
+
+  .finance-basic-info {
+    .budget-input {
+      display: inline;
+      max-width: 100px;
+    }
+  }
+
+  .finance-file-upload {
+    .drop-zone {
+      border: dotted 2px lightgray;
+      padding: 20px;
+      text-align: center;
+      background-color: #f5f5f5;
+    }
+    .drag-over {
+      border: dotted 2px $brand-primary-orange;
+    }
+
+    .action-box {
+      text-align: right;
+    }
+
+    .file-list-box {
+      margin-bottom: 40px
+    }
+
+    .upload-tips {
+      padding-top: 10px;
+    }
+  }
+
+  .finance-usage {
+    .hna-popup-calendar {
+      p {
+        margin: 0px;
+      }
+    }
+
+    .pagination {
+      margin: 0;
+    }
+
+    .finance-pagination{
+      a{
+        border: 1px solid #438EE4;
+        width: 80px;
+        text-align: center;
+        border-radius: $border-radius-base;
+      }
+      .disabled a{
+        border-color: $pagination-disabled-border;
+      }
+      .pagination-next a{
+        margin-left: 25px;
+      }
+    }
+
+    .finance-usage-form{
+      margin-bottom: 20px;
+
+      table {
+        th,td{
+          vertical-align: middle;
+        }
+        .btn-sm{
+          height: 2rem;
+          line-height: 2rem;
+          padding: 0;
+          text-align: center;
+        }
+        thead .btn-sm{
+          width: 9rem;
+        }
+        tbody .btn-sm{
+          width: 4rem;
+        }
+      }
+    }
+  }
+}
+
+
+
+

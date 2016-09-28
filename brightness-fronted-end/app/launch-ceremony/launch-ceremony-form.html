@@ -1,0 +1,212 @@
+<div class="required-tips">
+  <h6>*为必填项</h6>
+</div>
+<div class="row launch-ceremony-form">
+  <div class="col-lg-12">
+    <div class="panel info-panel">
+      <div class="panel-body">
+        <form name="launchCeremonyForm" class="panel-form" novalidate>
+          <div class="row">
+            <div class="col-xs-12 col-md-6 col-lg-6">
+              <div class="form-group">
+                <label>当地政府负责人</label>
+                <input type="text" class="form-control"
+                       maxlength="10" id="governmentName"
+                       ng-model="vm.launchCeremony.local_government.name">
+              </div>
+            </div>
+            <div class="col-xs-12 col-md-6 col-lg-6">
+              <div class="form-group">
+                <label>联系方式</label>
+                <input type="text" class="form-control"
+                       maxlength="30" id="governmentContact"
+                       ng-model="vm.launchCeremony.local_government.contact_info">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-12 col-md-6 col-lg-6">
+              <div class="form-group">
+                <label>海航负责人</label>
+                <input type="text" class="form-control"
+                       maxlength="10" id="hnaName"
+                       ng-model="vm.launchCeremony.hna.name">
+              </div>
+            </div>
+            <div class="col-xs-12 col-md-6 col-lg-6">
+              <div class="form-group">
+                <label>联系方式</label>
+                <input type="text" class="form-control"
+                       maxlength="30" id="hnaContact"
+                       ng-model="vm.launchCeremony.hna.contact_info">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-12 col-md-6 col-lg-6">
+              <div class="form-group">
+                <label>其他负责人</label>
+                <input type="text" class="form-control"
+                       maxlength="10" id="otherName"
+                       ng-model="vm.launchCeremony.other.name">
+              </div>
+            </div>
+            <div class="col-xs-12 col-md-6 col-lg-6">
+              <div class="form-group">
+                <label>联系方式</label>
+                <input type="text" class="form-control"
+                       maxlength="30" id="otherContact"
+                       ng-model="vm.launchCeremony.other.contact_info">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-12 col-md-6 col-lg-6">
+              <div class="form-group">
+                <label class="required-label">举办日期</label>
+                <hna-popup-calendar date="vm.launchCeremony.date" id="launchCeremonyDate" is-required="true"
+                                    name="launchCeremonyDate" ng-model="vm.launchCeremony.date">
+                </hna-popup-calendar>
+              </div>
+            </div>
+            <div class="col-xs-12 col-md-6 col-lg-6">
+              <div class="form-group"
+                   ng-class="{'has-error': vm.requiredField(launchCeremonyForm.address, launchCeremonyForm)}">
+                <label class="required-label">举办地点</label>
+                <input type="text" class="form-control" name="address" id="address"
+                       maxlength="100" required
+                       ng-model="vm.launchCeremony.address">
+                <p class="help-block"
+                   ng-show="vm.requiredField(launchCeremonyForm.address, launchCeremonyForm)">
+                  <i class="glyphicon glyphicon-remove-circle"></i>请填写举办地点
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-12 col-md-6 col-lg-6">
+              <div class="form-group">
+                <label>开始时间(24小时制)</label>
+                <div class="row">
+                  <div class="col-xs-8 col-md-5 col-lg-5">
+                    <hna-time-picker id="startTime" ng-model="vm.launchCeremony.start_time"
+                                     time="vm.launchCeremony.start_time"></hna-time-picker>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xs-12 col-md-6 col-lg-6">
+              <div class="form-group">
+                <label>结束时间(24小时制)</label>
+                <div class="row">
+                  <div class="col-xs-8 col-md-5 col-lg-5">
+                    <hna-time-picker id="endTime" ng-model="vm.launchCeremony.end_time"
+                                     time="vm.launchCeremony.end_time"></hna-time-picker>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-12 col-md-12 col-lg-12">
+              <div class="form-group">
+                <label>参加的海航领导</label>
+                <textarea class="form-control" id="hnaLeader" name="hnaLeader"
+                       ng-model="vm.launchCeremony.hna_leader" rows="3" maxlength="300">
+                </textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-12 col-md-12 col-lg-12">
+              <div class="form-group">
+                <label>其他领导</label>
+                <textarea class="form-control" id="otherLeader" name="otherLeader"
+                          ng-model="vm.launchCeremony.other_leader" rows="3" maxlength="300">
+                </textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-12 col-md-6 col-lg-6">
+              <div class="form-group"
+                   ng-class="{'has-error':vm.invalidNumber(launchCeremonyForm.patientNum, launchCeremonyForm)}">
+                <label>揭纱布人数</label>
+                <input type="number" class="form-control" name="patientNum" id="patientNum"
+                       ng-model="vm.launchCeremony.number_of_patient"
+                       min="0" max="99999">
+                <p class="help-block"
+                   ng-show="vm.invalidNumber(launchCeremonyForm.patientNum, launchCeremonyForm)">
+                  <i class="glyphicon glyphicon-remove-circle"></i>数字范围为0-99999
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-12 col-md-12 col-lg-12">
+              <div class="form-group">
+                <label>活动安排</label>
+                <table class="table panel-table">
+                  <thead>
+                    <tr>
+                      <th>开始时间</th>
+                      <th>结束时间</th>
+                      <th>活动安排</th>
+                      <th>备注</th>
+                      <th></th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr id="agenda{{$index}}" ng-repeat="item in vm.launchCeremony.agenda track by $index">
+                      <td>
+                        <hna-time-picker id="agendaStartTime{{$index}}" ng-model="item.start_time"
+                                         time="item.start_time"></hna-time-picker>
+                      </td>
+                      <td>
+                        <hna-time-picker id="agendaEndTime{{$index}}" ng-model="item.end_time"
+                                         time="item.end_time"></hna-time-picker>
+                      </td>
+                      <td class="input-field">
+                        <input class="form-control" type="text" id="agendaContent{{$index}}" ng-model="item.content" maxlength="100">
+                      </td>
+                      <td class="input-field">
+                        <input class="form-control" type="text" id="agendaNote{{$index}}" ng-model="item.note" maxlength="100">
+                      </td>
+                      <td class="button-field">
+                        <button class="btn btn-xs btn-success" id="add" ng-click="vm.addItemToAgenda($index)">+</button>
+                      </td>
+                      <td class="button-field">
+                        <button class="btn btn-xs btn-delete" id="delete" ng-click="vm.deleteItemFromAgenda($index)">-</button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-6 col-md-2 col-lg-2">
+              <button class="btn btn-lg btn-cancel" id="cancel" ui-sref="base.launchCeremonyView">返回</button>
+            </div>
+            <div class="col-xs-6 col-md-2 col-lg-2">
+              <button class="btn btn-lg btn-submit" id="submit" type="submit"
+                      ng-click="vm.submit(launchCeremonyForm)">提交</button>
+            </div>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

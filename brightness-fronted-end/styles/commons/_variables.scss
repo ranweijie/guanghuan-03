@@ -1,0 +1,48 @@
+// colors
+$main-color: #da3728;
+$brand-main-red: $main-color;
+//todo: $brand-main-yellow: $main-color;
+
+$brand-primary-red: #f55b5a;
+$brand-primary-red-dark: #d9534f;
+$brand-primary-orange: #ffa552;
+$brand-primary-orange-dark: #ea8f3a;
+$brand-primary-blue: #539cef;
+$brand-primary-blue-dark: #3983d8;
+
+// font-color
+$text-gray-dark: #4f4f4f;
+$text-gray: #6f6f6f;
+
+$text-color: $text-gray;
+$title-color: $text-gray-dark;
+
+$inactive-text-color: #949494;
+
+//bg-color
+$bg-gray-dark: #f1f1f1;
+$bg-gray: #fafafa;
+
+$btn-gray: #b6b6b6;
+$btn-gray-dark: #949494;
+
+$textarea-bg-color: $bg-gray-dark;
+$content-bg-color: $bg-gray;
+$sub-title-border-color: $bg-gray-dark;
+
+$table-odd-color: #eef4fc;
+
+// font size
+$font-xxxl: 30px;
+$font-xxl: 24px;
+$font-xl: 18px;
+$font-lg: 16px;
+$font-md: 14px; // same as $font-size-base in bootstrap
+$font-sm: 12px;
+
+$text-large: 36px;
+$text-extra-large: 70px;
+
+// screen resolution
+$screen-hna-md-min: 1200px;
+$screen-hna-md-max: 1350px;

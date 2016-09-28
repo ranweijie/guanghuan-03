@@ -1,0 +1,10 @@
+<div class="geo-map">
+  <div class="geo-map-result">
+    <i class="icon ui-icon-address"></i>
+    <span class="lnglat">{{getLocation()}}</span>
+  </div>
+  <div class="geo-map-content"></div>
+  <div class="geo-map-action" ng-show="draggable">
+    <input type="text" placeholder="请输入关键字选择下拉列表进行搜索" maxlength="30" id="tipinput">
+  </div>
+</div>

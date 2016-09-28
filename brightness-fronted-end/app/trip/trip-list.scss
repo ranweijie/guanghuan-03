@@ -1,0 +1,25 @@
+
+.trip-list {
+  .panel-heading {
+    border: none;
+  }
+  .trip-list-table {
+    padding: 10px;
+    border: 1px dashed #ccc;
+    border-radius: 4px;
+    table {
+      .td-content {
+        width: 80%;
+        i {
+          color: #c0cfdf;
+        }
+      }
+      .td-button {
+        width: 10%;
+      }
+      button {
+        width: 80%;
+      }
+    }
+  }
+}
